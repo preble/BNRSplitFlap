@@ -62,12 +62,10 @@
 	NSString *commandName = [cmd objectForKey:@"command"];
 	if ([commandName isEqualToString:@"display"])
 	{
-		NSString *targetID = [cmd objectForKey:@"id"];
-		NSString *text = [cmd objectForKey:@"value"];
-		if ([targetID isEqualToString:mClientID])
+		NSDictionary *deviceChars = [cmd objectForKey:@"devices"];
+		NSString *text = [deviceChars objectForKey:mClientID];
+		if (text)
 			[mDelegate splitFlapClient:self displayText:text];
-		else
-			NSLog(@"Ignoring display command for id %@", targetID);
 	}
 	else
 	{

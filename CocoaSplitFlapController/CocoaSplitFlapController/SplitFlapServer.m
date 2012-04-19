@@ -127,10 +127,11 @@
 
 - (void)device:(SFDevice *)device displayCharacter:(unichar)ch
 {
+	// Tell a single device to change.  Ordinarily this is done with all devices all at once.
 	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
 							 @"display", @"command",
-							 device.identifier, @"id",
-							 [NSString stringWithFormat:@"%c", ch], @"value",
+							 [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSString stringWithFormat:@"%c", ch], device.identifier, nil], @"devices",
 							 nil]];
 }
 
@@ -139,13 +140,19 @@
 - (void)displayString:(NSString *)str
 {
 	NSArray *devices = [self orderedDevices];
+	NSMutableDictionary *deviceChars = [NSMutableDictionary dictionary];
 	for (NSUInteger index = 0; index < [devices count]; index++)
 	{
 		unichar ch = ' ';
 		if (index < str.length)
 			ch = [str characterAtIndex:index];
-		[self device:[devices objectAtIndex:index] displayCharacter:ch];
+		SFDevice *device = [devices objectAtIndex:index];
+		[deviceChars setObject:[NSString stringWithFormat:@"%c", ch] forKey:device.identifier];
 	}
+	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
+							 @"display", @"command",
+							 deviceChars, @"devices",
+							 nil]];
 }
 
 - (NSArray *)devices
