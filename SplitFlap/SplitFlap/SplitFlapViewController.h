@@ -6,14 +6,15 @@
 //  Copyright (c) 2012 Big Nerd Ranch. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
 @class SplitFlapClient;
+@class Digit;
 
-@interface SplitFlapViewController : UIViewController {
+@interface SplitFlapViewController : GLKViewController {
 	SplitFlapClient *mClient;
 	NSTimer *mHeartbeatTimer;
+	Digit *mDigit;
 }
-@property (strong, nonatomic) IBOutlet UILabel *bigLabel;
 
 @end

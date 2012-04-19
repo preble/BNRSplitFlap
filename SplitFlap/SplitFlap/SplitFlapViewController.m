@@ -8,6 +8,7 @@
 
 #import "SplitFlapViewController.h"
 #import "SplitFlapClient.h"
+#import "Digit.h"
 
 @interface SplitFlapViewController () <SplitFlapClientDelegate>
 
@@ -15,17 +16,19 @@
 
 
 @implementation SplitFlapViewController
-@synthesize bigLabel;
 
 - (id)init
 {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-	    self = [self initWithNibName:@"SplitFlapViewController_iPhone" bundle:nil];
-	} else {
-	    self = [self initWithNibName:@"SplitFlapViewController_iPad" bundle:nil];
-	}
+	self = [super init];
 	if (self)
 	{
+		self.preferredFramesPerSecond = 30;
+		EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
+		GLKView *view = [[GLKView alloc] initWithFrame:CGRectZero context:context];
+		view.drawableDepthFormat = GLKViewDrawableDepthFormat16;
+		self.view = view;
+		
+		mDigit = [[Digit alloc] init];
 	}
 	return self;
 }
@@ -43,7 +46,6 @@
 
 - (void)viewDidUnload
 {
-	[self setBigLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -72,6 +74,7 @@
 {
 	NSLog(@"tap!");
 	[mClient tap];
+//	[mDigit random];
 }
 
 - (void)heartbeat:(NSTimer *)timer
@@ -79,23 +82,40 @@
 	[mClient heartbeat];
 }
 
+- (void)setString:(NSString *)str
+{
+	[mDigit setCharacter:str animated:YES];
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+	glClearColor(0.3, 0.3, 0.3, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	glEnable(GL_DEPTH_TEST);
+	
+	[mDigit drawOpenGL];
+	
+	[mDigit tick];
+}
+
 #pragma mark SplitFlapClientDelegate
 
 - (void)splitFlapClientConnected:(SplitFlapClient *)client
 {
-	self.bigLabel.text = @" ";
+	[self setString:@"!"];
 	mHeartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat:) userInfo:nil repeats:YES];
 }
 
 - (void)splitFlapClientDisconnected:(SplitFlapClient *)client
 {
-	self.bigLabel.text = @"ಠ";
+	[self setString:@"X"];
 	[mHeartbeatTimer invalidate];
 }
 
 - (void)splitFlapClient:(SplitFlapClient *)client displayText:(NSString *)text
 {
-	self.bigLabel.text = text;
+	[self setString:text];
 }
 
 @end

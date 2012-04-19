@@ -14,8 +14,6 @@
 		664C5FD0153F765B00699F4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C5FCF153F765B00699F4A /* main.m */; };
 		664C5FD4153F765B00699F4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C5FD3153F765B00699F4A /* AppDelegate.m */; };
 		664C5FD7153F765C00699F4A /* SplitFlapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C5FD6153F765C00699F4A /* SplitFlapViewController.m */; };
-		664C5FDA153F765C00699F4A /* SplitFlapViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664C5FD8153F765C00699F4A /* SplitFlapViewController_iPhone.xib */; };
-		664C5FDD153F765C00699F4A /* SplitFlapViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664C5FDB153F765C00699F4A /* SplitFlapViewController_iPad.xib */; };
 		664C5FE7153F7F5500699F4A /* ZMQClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C5FE6153F7F5500699F4A /* ZMQClient.m */; };
 		664C5FEA153F843E00699F4A /* libzmq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 664C5FE9153F843E00699F4A /* libzmq.a */; };
 		664C6031153F863F00699F4A /* zclock.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C6025153F863F00699F4A /* zclock.c */; };
@@ -31,8 +29,13 @@
 		664C603B153F863F00699F4A /* zstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C602F153F863F00699F4A /* zstr.c */; };
 		664C603C153F863F00699F4A /* zthread.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C6030153F863F00699F4A /* zthread.c */; };
 		664C607C153FAE2B00699F4A /* SplitFlapClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C607B153FAE2B00699F4A /* SplitFlapClient.m */; };
-		66B151CB1540638C00D13CD3 /* SplitFlapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B151CA1540638C00D13CD3 /* SplitFlapView.m */; };
 		66B151CE1540639E00D13CD3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B151CD1540639E00D13CD3 /* GLKit.framework */; };
+		66B151D9154065F200D13CD3 /* BitmapFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66B151D7154065F200D13CD3 /* BitmapFont.plist */; };
+		66B151DA154065F200D13CD3 /* BitmapFont.png in Resources */ = {isa = PBXBuildFile; fileRef = 66B151D8154065F200D13CD3 /* BitmapFont.png */; };
+		66B151DD154067D600D13CD3 /* Flap.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B151DC154067D600D13CD3 /* Flap.m */; };
+		66B151E0154067F100D13CD3 /* Digit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B151DF154067F100D13CD3 /* Digit.m */; };
+		66B151E3154068BA00D13CD3 /* BitmapFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B151E2154068BA00D13CD3 /* BitmapFont.m */; };
+		66B151E515406A8C00D13CD3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B151E415406A8C00D13CD3 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +51,6 @@
 		664C5FD3153F765B00699F4A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		664C5FD5153F765B00699F4A /* SplitFlapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplitFlapViewController.h; sourceTree = "<group>"; };
 		664C5FD6153F765C00699F4A /* SplitFlapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplitFlapViewController.m; sourceTree = "<group>"; };
-		664C5FD9153F765C00699F4A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SplitFlapViewController_iPhone.xib; sourceTree = "<group>"; };
-		664C5FDC153F765C00699F4A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SplitFlapViewController_iPad.xib; sourceTree = "<group>"; };
 		664C5FE5153F7F5500699F4A /* ZMQClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMQClient.h; sourceTree = "<group>"; };
 		664C5FE6153F7F5500699F4A /* ZMQClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMQClient.m; sourceTree = "<group>"; };
 		664C5FE9153F843E00699F4A /* libzmq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzmq.a; path = lib/libzmq.a; sourceTree = "<group>"; };
@@ -84,9 +85,16 @@
 		664C6030153F863F00699F4A /* zthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zthread.c; sourceTree = "<group>"; };
 		664C607A153FAE2B00699F4A /* SplitFlapClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFlapClient.h; sourceTree = "<group>"; };
 		664C607B153FAE2B00699F4A /* SplitFlapClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFlapClient.m; sourceTree = "<group>"; };
-		66B151C91540638C00D13CD3 /* SplitFlapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFlapView.h; sourceTree = "<group>"; };
-		66B151CA1540638C00D13CD3 /* SplitFlapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFlapView.m; sourceTree = "<group>"; };
 		66B151CD1540639E00D13CD3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		66B151D7154065F200D13CD3 /* BitmapFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BitmapFont.plist; sourceTree = "<group>"; };
+		66B151D8154065F200D13CD3 /* BitmapFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitmapFont.png; sourceTree = "<group>"; };
+		66B151DB154067D600D13CD3 /* Flap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flap.h; sourceTree = "<group>"; };
+		66B151DC154067D600D13CD3 /* Flap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flap.m; sourceTree = "<group>"; };
+		66B151DE154067F100D13CD3 /* Digit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digit.h; sourceTree = "<group>"; };
+		66B151DF154067F100D13CD3 /* Digit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Digit.m; sourceTree = "<group>"; };
+		66B151E1154068BA00D13CD3 /* BitmapFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapFont.h; sourceTree = "<group>"; };
+		66B151E2154068BA00D13CD3 /* BitmapFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitmapFont.m; sourceTree = "<group>"; };
+		66B151E415406A8C00D13CD3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B151E515406A8C00D13CD3 /* OpenGLES.framework in Frameworks */,
 				66B151CE1540639E00D13CD3 /* GLKit.framework in Frameworks */,
 				664C5FC4153F765B00699F4A /* UIKit.framework in Frameworks */,
 				664C5FC6153F765B00699F4A /* Foundation.framework in Frameworks */,
@@ -125,6 +134,7 @@
 		664C5FC2153F765B00699F4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66B151E415406A8C00D13CD3 /* OpenGLES.framework */,
 				66B151CD1540639E00D13CD3 /* GLKit.framework */,
 				664C5FC3153F765B00699F4A /* UIKit.framework */,
 				664C5FC5153F765B00699F4A /* Foundation.framework */,
@@ -139,6 +149,7 @@
 				66B151CF154063BC00D13CD3 /* ZMQ Client API */,
 				66B151D0154063D000D13CD3 /* App */,
 				66B151D1154063DC00D13CD3 /* Client UI */,
+				66B151D6154065F200D13CD3 /* Images */,
 				664C5FCA153F765B00699F4A /* Supporting Files */,
 			);
 			path = SplitFlap;
@@ -241,15 +252,26 @@
 		66B151D1154063DC00D13CD3 /* Client UI */ = {
 			isa = PBXGroup;
 			children = (
-				66B151C91540638C00D13CD3 /* SplitFlapView.h */,
-				66B151CA1540638C00D13CD3 /* SplitFlapView.m */,
+				66B151DE154067F100D13CD3 /* Digit.h */,
+				66B151DF154067F100D13CD3 /* Digit.m */,
+				66B151DB154067D600D13CD3 /* Flap.h */,
+				66B151DC154067D600D13CD3 /* Flap.m */,
+				66B151E1154068BA00D13CD3 /* BitmapFont.h */,
+				66B151E2154068BA00D13CD3 /* BitmapFont.m */,
 				664C5FD5153F765B00699F4A /* SplitFlapViewController.h */,
 				664C5FD6153F765C00699F4A /* SplitFlapViewController.m */,
-				664C5FD8153F765C00699F4A /* SplitFlapViewController_iPhone.xib */,
-				664C5FDB153F765C00699F4A /* SplitFlapViewController_iPad.xib */,
 			);
 			name = "Client UI";
 			sourceTree = "<group>";
+		};
+		66B151D6154065F200D13CD3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				66B151D7154065F200D13CD3 /* BitmapFont.plist */,
+				66B151D8154065F200D13CD3 /* BitmapFont.png */,
+			);
+			path = Images;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -303,8 +325,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				664C5FCE153F765B00699F4A /* InfoPlist.strings in Resources */,
-				664C5FDA153F765C00699F4A /* SplitFlapViewController_iPhone.xib in Resources */,
-				664C5FDD153F765C00699F4A /* SplitFlapViewController_iPad.xib in Resources */,
+				66B151D9154065F200D13CD3 /* BitmapFont.plist in Resources */,
+				66B151DA154065F200D13CD3 /* BitmapFont.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +354,9 @@
 				664C603B153F863F00699F4A /* zstr.c in Sources */,
 				664C603C153F863F00699F4A /* zthread.c in Sources */,
 				664C607C153FAE2B00699F4A /* SplitFlapClient.m in Sources */,
-				66B151CB1540638C00D13CD3 /* SplitFlapView.m in Sources */,
+				66B151DD154067D600D13CD3 /* Flap.m in Sources */,
+				66B151E0154067F100D13CD3 /* Digit.m in Sources */,
+				66B151E3154068BA00D13CD3 /* BitmapFont.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,22 +369,6 @@
 				664C5FCD153F765B00699F4A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		664C5FD8153F765C00699F4A /* SplitFlapViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				664C5FD9153F765C00699F4A /* en */,
-			);
-			name = SplitFlapViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		664C5FDB153F765C00699F4A /* SplitFlapViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				664C5FDC153F765C00699F4A /* en */,
-			);
-			name = SplitFlapViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

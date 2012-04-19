@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key> </key>
+	<string>{{1050, 1608}, {101, 402}}</string>
+	<key>,</key>
+	<string>{{949, 1608}, {101, 402}}</string>
+	<key>-</key>
+	<string>{{606, 1608}, {141, 402}}</string>
+	<key>.</key>
+	<string>{{848, 1608}, {101, 402}}</string>
+	<key>0</key>
+	<string>{{457, 1206}, {202, 402}}</string>
+	<key>1</key>
+	<string>{{659, 1206}, {202, 402}}</string>
+	<key>2</key>
+	<string>{{861, 1206}, {202, 402}}</string>
+	<key>3</key>
+	<string>{{1063, 1206}, {202, 402}}</string>
+	<key>4</key>
+	<string>{{1265, 1206}, {202, 402}}</string>
+	<key>5</key>
+	<string>{{1467, 1206}, {202, 402}}</string>
+	<key>6</key>
+	<string>{{1669, 1206}, {202, 402}}</string>
+	<key>7</key>
+	<string>{{0, 1608}, {202, 402}}</string>
+	<key>8</key>
+	<string>{{202, 1608}, {202, 402}}</string>
+	<key>9</key>
+	<string>{{404, 1608}, {202, 402}}</string>
+	<key>:</key>
+	<string>{{747, 1608}, {101, 402}}</string>
+	<key>A</key>
+	<string>{{0, 0}, {235, 402}}</string>
+	<key>B</key>
+	<string>{{235, 0}, {249, 402}}</string>
+	<key>C</key>
+	<string>{{484, 0}, {262, 402}}</string>
+	<key>D</key>
+	<string>{{746, 0}, {256, 402}}</string>
+	<key>E</key>
+	<string>{{1002, 0}, {222, 402}}</string>
+	<key>F</key>
+	<string>{{1224, 0}, {208, 402}}</string>
+	<key>G</key>
+	<string>{{1432, 0}, {275, 402}}</string>
+	<key>H</key>
+	<string>{{1707, 0}, {262, 402}}</string>
+	<key>I</key>
+	<string>{{0, 402}, {94, 402}}</string>
+	<key>J</key>
+	<string>{{94, 402}, {189, 402}}</string>
+	<key>K</key>
+	<string>{{283, 402}, {242, 402}}</string>
+	<key>L</key>
+	<string>{{525, 402}, {202, 402}}</string>
+	<key>M</key>
+	<string>{{727, 402}, {316, 402}}</string>
+	<key>N</key>
+	<string>{{1043, 402}, {262, 402}}</string>
+	<key>O</key>
+	<string>{{1305, 402}, {276, 402}}</string>
+	<key>P</key>
+	<string>{{1581, 402}, {235, 402}}</string>
+	<key>Q</key>
+	<string>{{0, 804}, {276, 402}}</string>
+	<key>R</key>
+	<string>{{276, 804}, {249, 402}}</string>
+	<key>S</key>
+	<string>{{525, 804}, {235, 402}}</string>
+	<key>T</key>
+	<string>{{760, 804}, {208, 402}}</string>
+	<key>U</key>
+	<string>{{968, 804}, {262, 402}}</string>
+	<key>V</key>
+	<string>{{1230, 804}, {222, 402}}</string>
+	<key>W</key>
+	<string>{{1452, 804}, {336, 402}}</string>
+	<key>X</key>
+	<string>{{1788, 804}, {222, 402}}</string>
+	<key>Y</key>
+	<string>{{0, 1206}, {235, 402}}</string>
+	<key>Z</key>
+	<string>{{235, 1206}, {222, 402}}</string>
+</dict>
+</plist>
