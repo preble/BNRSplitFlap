@@ -113,26 +113,41 @@
 		memcpy(zmq_msg_data(&msg), [data bytes], [data length]);
 		zmq_send(mReqSocket, &msg, 0);
 		zmq_msg_close(&msg);
+
+		// Wait for a response, but only for 2s:
+		zmq_pollitem_t pollitems[] = { { mReqSocket, 0, ZMQ_POLLIN, 0 } };
+		zmq_poll(pollitems, 1, 2000 * ZMQ_POLL_MSEC);
 		
-		zmsg_t *reply = zmsg_recv(mReqSocket);
-		if (!reply)
+		if (pollitems[0].revents & ZMQ_POLLIN)
 		{
+			zmsg_t *reply = zmsg_recv(mReqSocket);
+			if (!reply)
+			{
+				dispatch_async(dispatch_get_main_queue(), ^{
+					responseBlock(nil, [NSError errorWithDomain:@"ReceiveInterrupted" code:0 userInfo:nil]);
+				});
+				return;
+			}
+			NSData *replyData = [NSData dataFromZeroMQMessage:reply];
+			NSDictionary *replyPlist = [NSJSONSerialization JSONObjectWithData:replyData options:0 error:&err];
+
 			dispatch_async(dispatch_get_main_queue(), ^{
-				responseBlock(nil, [NSError errorWithDomain:@"ReceiveInterrupted" code:0 userInfo:nil]);
+				if (!replyPlist)
+					responseBlock(nil, err);
+				else
+					responseBlock(replyPlist, nil);
 			});
-			return;
+
+			zmsg_destroy(&reply);
 		}
-		NSData *replyData = [NSData dataFromZeroMQMessage:reply];
-		NSDictionary *replyPlist = [NSJSONSerialization JSONObjectWithData:replyData options:0 error:&err];
-
-		dispatch_async(dispatch_get_main_queue(), ^{
-			if (!replyPlist)
+		else
+		{
+			NSLog(@"Timeout while waiting for response.");
+			dispatch_async(dispatch_get_main_queue(), ^{
+				NSError *err = [NSError errorWithDomain:@"ZMQTimeout" code:0 userInfo:nil];
 				responseBlock(nil, err);
-			else
-				responseBlock(replyPlist, nil);
-		});
-
-		zmsg_destroy(&reply);
+			});
+		}
 	});
 	return YES;
 }

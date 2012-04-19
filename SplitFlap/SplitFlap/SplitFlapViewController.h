@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class ZMQClient;
+@class SplitFlapClient;
 
 @interface SplitFlapViewController : UIViewController {
-	ZMQClient *mClient;
-	NSString *mClientID;
+	SplitFlapClient *mClient;
+	NSTimer *mHeartbeatTimer;
 }
 @property (strong, nonatomic) IBOutlet UILabel *bigLabel;
 

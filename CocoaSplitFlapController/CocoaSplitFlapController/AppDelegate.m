@@ -7,52 +7,41 @@
 //
 
 #import "AppDelegate.h"
-#import "ZMQServer.h"
+#import "SplitFlapServer.h"
+
+@interface AppDelegate () <SplitFlapServerDelegate>
+@end
 
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize displayText = mDisplayText;
+@synthesize statusText = mStatusText;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	// Insert code here to initialize your application
-	
-	__weak AppDelegate *weakSelf = self;
-	
-	mServer = [[ZMQServer alloc] init];
-	mServer.commandBlock = ^ (NSDictionary *cmd) {
-		return [weakSelf handleCommand:cmd];
-	};
-	[mServer startOnBasePort:15780];
+	mServer = [[SplitFlapServer alloc] init];
+	mServer.delegate = self;
+	[self updateStatusText];
 }
 
-- (NSDictionary *)handleCommand:(NSDictionary *)cmd
+- (void)setDisplayText:(NSString *)displayText
 {
-	NSString *cmdName = [cmd objectForKey:@"command"];
-	NSLog(@"Received command: %@", cmdName);
-	if ([cmdName isEqualToString:@"hello"])
-	{
-		NSString *clientID = @"abcd1234";
-		
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-				clientID, @"id",
-				nil];
-	}
-	else if ([cmdName isEqualToString:@"tap"])
-	{
-		NSString *clientID = [cmd objectForKey:@"id"];
-		NSLog(@"got tap from %@", clientID);
-	}
-	else if ([cmdName isEqualToString:@"beat"])
-	{
-		NSString *clientID = [cmd objectForKey:@"id"];
-		NSLog(@"got beat from %@", clientID);
-	}
-	else
-	{
-		NSLog(@"Received unknown command: %@", cmd);
-	}
-	return [NSDictionary dictionary];
+	mDisplayText = displayText;
+	[mServer displayString:mDisplayText];
+}
+
+- (void)updateStatusText
+{
+	self.statusText = [NSString stringWithFormat:@"%d devices", [[mServer devices] count]];
+}
+
+#pragma mark - SplitFlapServerDelegate
+
+- (void)splitFlapServerDevicesChanged:(SplitFlapServer *)controller
+{
+	[self updateStatusText];
 }
 
 @end

@@ -30,6 +30,7 @@
 		664C603A153F863F00699F4A /* zsockopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C602E153F863F00699F4A /* zsockopt.c */; };
 		664C603B153F863F00699F4A /* zstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C602F153F863F00699F4A /* zstr.c */; };
 		664C603C153F863F00699F4A /* zthread.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C6030153F863F00699F4A /* zthread.c */; };
+		664C607C153FAE2B00699F4A /* SplitFlapClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C607B153FAE2B00699F4A /* SplitFlapClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		664C602E153F863F00699F4A /* zsockopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zsockopt.c; sourceTree = "<group>"; };
 		664C602F153F863F00699F4A /* zstr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zstr.c; sourceTree = "<group>"; };
 		664C6030153F863F00699F4A /* zthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zthread.c; sourceTree = "<group>"; };
+		664C607A153FAE2B00699F4A /* SplitFlapClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFlapClient.h; sourceTree = "<group>"; };
+		664C607B153FAE2B00699F4A /* SplitFlapClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFlapClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				664C5FE8153F842D00699F4A /* ZeroMQ */,
+				664C607A153FAE2B00699F4A /* SplitFlapClient.h */,
+				664C607B153FAE2B00699F4A /* SplitFlapClient.m */,
 				664C5FE5153F7F5500699F4A /* ZMQClient.h */,
 				664C5FE6153F7F5500699F4A /* ZMQClient.m */,
 				664C5FD2153F765B00699F4A /* AppDelegate.h */,
@@ -293,6 +298,7 @@
 				664C603A153F863F00699F4A /* zsockopt.c in Sources */,
 				664C603B153F863F00699F4A /* zstr.c in Sources */,
 				664C603C153F863F00699F4A /* zthread.c in Sources */,
+				664C607C153FAE2B00699F4A /* SplitFlapClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

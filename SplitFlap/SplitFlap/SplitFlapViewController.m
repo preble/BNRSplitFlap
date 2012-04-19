@@ -7,9 +7,9 @@
 //
 
 #import "SplitFlapViewController.h"
-#import "ZMQClient.h"
+#import "SplitFlapClient.h"
 
-@interface SplitFlapViewController ()
+@interface SplitFlapViewController () <SplitFlapClientDelegate>
 
 @end
 
@@ -26,13 +26,13 @@
 	}
 	if (self)
 	{
-		__weak SplitFlapViewController *weakSelf = self;
-		mClient = [[ZMQClient alloc] init];
-		mClient.commandBlock = ^ (NSDictionary *command) {
-			[weakSelf processCommand:command];
-		};
 	}
 	return self;
+}
+
+- (void)dealloc
+{
+	[mHeartbeatTimer invalidate];
 }
 
 - (void)viewDidLoad
@@ -61,54 +61,41 @@
 {
 	[super viewWillAppear:animated];
 	
-	[mClient connectToHost:@"10.1.10.31" basePort:15780];
-	
-	NSDictionary *helloCommand = [NSDictionary dictionaryWithObjectsAndKeys:
-								  @"hello", @"command",
-								  nil];
-	[mClient sendToServer:helloCommand response:^(NSDictionary *resp, NSError *error) {
-		if (resp)
-		{
-			mClientID = [resp objectForKey:@"id"];
-			NSLog(@"Got ID: %@", mClientID);
-		}
-		else
-		{
-			NSLog(@"Error from hello command: %@", error);
-		}
-	}];
+	mClient = [[SplitFlapClient alloc] init];
+	mClient.delegate = self;
 	
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
 	[self.view addGestureRecognizer:tap];
 }
 
-- (void)processCommand:(NSDictionary *)cmd
-{
-	NSString *commandName = [cmd objectForKey:@"command"];
-	if ([commandName isEqualToString:@"display"])
-	{
-		NSString *targetID = [cmd objectForKey:@"id"];
-		if ([targetID isEqualToString:mClientID])
-			self.bigLabel.text = [cmd objectForKey:@"value"];
-		else
-			NSLog(@"Ignoring display command for id %@", targetID);
-	}
-	else
-	{
-		NSLog(@"%s Unrecognized command: %@", __PRETTY_FUNCTION__, cmd);
-	}
-}
-
 - (void)tap:(UITapGestureRecognizer *)tap
 {
 	NSLog(@"tap!");
-	NSDictionary *cmd = [NSDictionary dictionaryWithObjectsAndKeys:
-						 @"tap", @"command",
-						 mClientID, @"id",
-						 nil];
-	[mClient sendToServer:cmd response:^(NSDictionary *resp, NSError *error) {
-		// don't care
-	}];
+	[mClient tap];
+}
+
+- (void)heartbeat:(NSTimer *)timer
+{
+	[mClient heartbeat];
+}
+
+#pragma mark SplitFlapClientDelegate
+
+- (void)splitFlapClientConnected:(SplitFlapClient *)client
+{
+	self.bigLabel.text = @" ";
+	mHeartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat:) userInfo:nil repeats:YES];
+}
+
+- (void)splitFlapClientDisconnected:(SplitFlapClient *)client
+{
+	self.bigLabel.text = @"ಠ";
+	[mHeartbeatTimer invalidate];
+}
+
+- (void)splitFlapClient:(SplitFlapClient *)client displayText:(NSString *)text
+{
+	self.bigLabel.text = text;
 }
 
 @end

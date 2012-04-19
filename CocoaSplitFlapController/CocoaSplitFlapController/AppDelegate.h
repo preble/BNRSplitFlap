@@ -8,12 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class ZMQServer;
+@class SplitFlapServer;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-	ZMQServer *mServer;
+	SplitFlapServer *mServer;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, strong) NSString *displayText;
+@property (nonatomic, strong) NSString *statusText;
 
 @end

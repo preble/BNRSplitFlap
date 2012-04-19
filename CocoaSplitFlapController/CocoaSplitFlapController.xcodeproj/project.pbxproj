@@ -16,6 +16,8 @@
 		664C606A153F92BB00699F4A /* libzmq.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 664C6069153F92BB00699F4A /* libzmq.dylib */; };
 		664C606D153F92D100699F4A /* ZMQServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C606C153F92D100699F4A /* ZMQServer.m */; };
 		664C606F153F999800699F4A /* libczmq.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 664C606E153F999800699F4A /* libczmq.dylib */; };
+		664C6072153FA12000699F4A /* SplitFlapServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C6071153FA12000699F4A /* SplitFlapServer.m */; };
+		664C6075153FA26400699F4A /* SFDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C6074153FA26400699F4A /* SFDevice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,10 @@
 		664C606B153F92D100699F4A /* ZMQServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMQServer.h; sourceTree = "<group>"; };
 		664C606C153F92D100699F4A /* ZMQServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMQServer.m; sourceTree = "<group>"; };
 		664C606E153F999800699F4A /* libczmq.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libczmq.dylib; path = usr/local/lib/libczmq.dylib; sourceTree = SDKROOT; };
+		664C6070153FA12000699F4A /* SplitFlapServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFlapServer.h; sourceTree = "<group>"; };
+		664C6071153FA12000699F4A /* SplitFlapServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFlapServer.m; sourceTree = "<group>"; };
+		664C6073153FA26300699F4A /* SFDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDevice.h; sourceTree = "<group>"; };
+		664C6074153FA26400699F4A /* SFDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDevice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,10 @@
 		664C6052153F92A100699F4A /* CocoaSplitFlapController */ = {
 			isa = PBXGroup;
 			children = (
+				664C6070153FA12000699F4A /* SplitFlapServer.h */,
+				664C6071153FA12000699F4A /* SplitFlapServer.m */,
+				664C6073153FA26300699F4A /* SFDevice.h */,
+				664C6074153FA26400699F4A /* SFDevice.m */,
 				664C606B153F92D100699F4A /* ZMQServer.h */,
 				664C606C153F92D100699F4A /* ZMQServer.m */,
 				664C605E153F92A100699F4A /* AppDelegate.h */,
@@ -182,6 +192,8 @@
 				664C6059153F92A100699F4A /* main.m in Sources */,
 				664C6060153F92A100699F4A /* AppDelegate.m in Sources */,
 				664C606D153F92D100699F4A /* ZMQServer.m in Sources */,
+				664C6072153FA12000699F4A /* SplitFlapServer.m in Sources */,
+				664C6075153FA26400699F4A /* SFDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
