@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *front; // draw top half of this character on the front
 @property (nonatomic, strong) NSString *back; // draw bottom half of this character on the back
 @property (nonatomic, readonly) NSUInteger ticksAtRest;
+@property (nonatomic, readonly) float angle;
 @property (nonatomic, assign) BOOL hidden;
 
 - (void)reset; // reset this flap to be upright and ready to fall

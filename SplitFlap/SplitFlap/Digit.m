@@ -19,7 +19,6 @@
     self = [super init];
     if (self) {
         mCharacters = [[[BitmapFont standardFont] characters] sortedArrayUsingSelector:@selector(compare:)];
-//		mCharacters = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", nil];
 		NSMutableArray *flaps = [NSMutableArray array];
 		NSString *lastChStr = [mCharacters lastObject];
 		for (NSString *chStr in mCharacters)
@@ -31,13 +30,13 @@
 			lastChStr = chStr;
 			
 			[flap reset];
+			flap.hidden = YES;
 		}
-		[[mFlaps objectAtIndex:0] setHidden:YES];
 		mFlaps = flaps;
 		mTopCharacterIndex = 0;
 		mTicksUntilNextTrip = NSUIntegerMax;
 		
-		[self setCharacter:@"L" animated:YES];
+		[self setCharacter:@"A" animated:YES];
     }
     return self;
 }
@@ -99,11 +98,34 @@
 	[self setCharacter:[mCharacters objectAtIndex:random() % [mCharacters count]] animated:YES];
 }
 
+- (NSArray *)flapsForDrawing
+{
+	NSMutableArray *output = [NSMutableArray array];
+	for (Flap *flap in self.flaps)
+	{
+		if (flap.hidden == NO)
+			[output addObject:flap];
+	}
+	[output sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+		Flap *a = obj1;
+		Flap *b = obj2;
+		float angleA = fabsf(a.angle - 90);
+		float angleB = fabsf(b.angle - 90);
+		if (angleA == angleB)
+			return NSOrderedSame;
+		if (angleA < angleB)
+			return NSOrderedDescending;
+		else
+			return NSOrderedAscending;
+	}];
+	return output;
+}
+
 - (void)drawOpenGL
 {
 	glEnable(GL_TEXTURE_2D);
 	
-	for (Flap *flap in self.flaps)
+	for (Flap *flap in [self flapsForDrawing])
 	{
 		[flap drawOpenGL];
 	}

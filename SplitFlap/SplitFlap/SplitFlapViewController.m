@@ -25,7 +25,6 @@
 		self.preferredFramesPerSecond = 30;
 		EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
 		GLKView *view = [[GLKView alloc] initWithFrame:CGRectZero context:context];
-		view.drawableDepthFormat = GLKViewDrawableDepthFormat16;
 		self.view = view;
 		
 		mDigit = [[Digit alloc] init];
@@ -90,9 +89,7 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
 	glClearColor(0.3, 0.3, 0.3, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	glEnable(GL_DEPTH_TEST);
+	glClear(GL_COLOR_BUFFER_BIT);
 	
 	[mDigit drawOpenGL];
 	
@@ -103,7 +100,7 @@
 
 - (void)splitFlapClientConnected:(SplitFlapClient *)client
 {
-	[self setString:@"!"];
+	[self setString:@" "];
 	mHeartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat:) userInfo:nil repeats:YES];
 }
 

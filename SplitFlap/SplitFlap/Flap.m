@@ -52,6 +52,11 @@
 	mTicksAtRest = 0;
 }
 
+- (float)angle
+{
+	return mAngle;
+}
+
 #define GLERR
 
 - (void)drawOpenGL
@@ -63,16 +68,6 @@
 	glBindTexture(GL_TEXTURE_2D, [[font texture] name]);
 	
 	glPushMatrix();
-
-	const GLfloat halfHeight = 1.0;
-	const GLfloat halfWidth = 1.0;
-	const GLfloat squareVertices[] = {
-        -halfWidth, -halfHeight * 0,
-		halfWidth, -halfHeight * 0
-		,
-        -halfWidth,  halfHeight,
-		halfWidth,  halfHeight,
-    };
 	
 	glRotatef(-mAngle, 1, 0, 0);
 	
@@ -100,6 +95,27 @@
 	GLfloat x1 = CGRectGetMaxX(textureRect);
 	GLfloat y1 = textureRect.origin.y + textureRect.size.height;
 	
+	const GLfloat letterAspectRatio = (2.0*fabs(textureRect.size.height)) / textureRect.size.width;
+	const GLfloat halfHeight = 1.0;
+	const GLfloat halfWidth = 1.0;
+	const GLfloat letterWidth = 1.5/letterAspectRatio;
+	
+	const GLfloat squareVertices[] = {
+        -halfWidth, -halfHeight * 0,
+		halfWidth, -halfHeight * 0
+		,
+        -halfWidth,  halfHeight,
+		halfWidth,  halfHeight,
+    };
+	
+	const GLfloat letterVertices[] = {
+        -letterWidth, -halfHeight * 0,
+		letterWidth, -halfHeight * 0
+		,
+        -letterWidth,  halfHeight,
+		letterWidth,  halfHeight,
+    };
+
 	GLfloat textureCoords[] = {
 		x0, y1, //0,1,
 		x1, y1, //1,1,
@@ -107,12 +123,22 @@
 		x1, y0, //1,0
 	};
 	
-	glTexCoordPointer(2, GL_FLOAT, 0, textureCoords);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	
 	glVertexPointer(2, GL_FLOAT, 0, squareVertices);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	GLERR;
+	
+	glDisable(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	
+	glColor4f(0, 0, 0, 1);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	
+
+	glEnable(GL_TEXTURE_2D);
+	glVertexPointer(2, GL_FLOAT, 0, letterVertices);
+
+	glTexCoordPointer(2, GL_FLOAT, 0, textureCoords);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	
 	glColor4f(1, 1, 1, 1);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
