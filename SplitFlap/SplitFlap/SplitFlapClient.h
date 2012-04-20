@@ -35,4 +35,6 @@
 - (void)splitFlapClientStartListening:(SplitFlapClient *)client;
 - (CGFloat)splitFlapClientStopListening:(SplitFlapClient *)client;
 
+- (void)splitFlapClient:(SplitFlapClient *)client displayColor:(UIColor *)color;
+
 @end

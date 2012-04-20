@@ -9,6 +9,8 @@
 #import "SplitFlapClient.h"
 #import "ZMQClient.h"
 
+NSString *UUIDString(void);
+
 @implementation SplitFlapClient
 
 @synthesize delegate = mDelegate;
@@ -18,6 +20,14 @@
     self = [super init];
     if (self)
 	{
+		NSString * const kIdentifier = @"splitflap.identifier";
+		mClientID = [[NSUserDefaults standardUserDefaults] objectForKey:kIdentifier];
+		if (!mClientID)
+		{
+			mClientID = UUIDString();
+			[[NSUserDefaults standardUserDefaults] setObject:mClientID forKey:kIdentifier];
+		}
+		
 		__weak SplitFlapClient *weakSelf = self;
 		mClient = [[ZMQClient alloc] init];
 		mClient.commandBlock = ^ (NSDictionary *command) {
@@ -38,6 +48,7 @@
 {
 	NSDictionary *helloCommand = [NSDictionary dictionaryWithObjectsAndKeys:
 								  @"hello", @"command",
+								  mClientID, @"id",
 								  nil];
 	[mClient sendToServer:helloCommand response:^(NSDictionary *resp, NSError *error) {
 		if (resp)
@@ -106,6 +117,15 @@
 			// don't care
 		}];
 	}
+	else if ([commandName isEqualToString:@"color"])
+	{
+		NSDictionary *deviceChars = [cmd objectForKey:@"devices"];
+		NSDictionary *components = [deviceChars objectForKey:mClientID];
+		CGFloat r = [[components objectForKey:@"r"] floatValue];
+		CGFloat g = [[components objectForKey:@"g"] floatValue];
+		CGFloat b = [[components objectForKey:@"b"] floatValue];
+		[mDelegate splitFlapClient:self displayColor:[UIColor colorWithRed:r green:g blue:b alpha:1]];
+	}
 	else
 	{
 		NSLog(@"%s Unrecognized command: %@", __PRETTY_FUNCTION__, cmd);
@@ -151,3 +171,13 @@
 
 
 @end
+
+
+
+NSString *UUIDString(void)
+{
+	CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
+	NSString *uuidStr = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
+	CFRelease(uuidObject);
+	return uuidStr;
+}

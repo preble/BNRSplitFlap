@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6690C7D01541CE2200A2D125 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690C7CF1541CE2200A2D125 /* UIKit.framework */; };
+		6690C7D21541CE2200A2D125 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690C7D11541CE2200A2D125 /* Foundation.framework */; };
+		6690C7D41541CE2200A2D125 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690C7D31541CE2200A2D125 /* CoreGraphics.framework */; };
+		6690C7DA1541CE2200A2D125 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6690C7D81541CE2200A2D125 /* InfoPlist.strings */; };
+		6690C7DC1541CE2200A2D125 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6690C7DB1541CE2200A2D125 /* main.m */; };
+		6690C7E01541CE2200A2D125 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6690C7DF1541CE2200A2D125 /* AppDelegate.m */; };
+		6690C7E31541CE2200A2D125 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6690C7E21541CE2200A2D125 /* ViewController.m */; };
+		6690C7E61541CE2200A2D125 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6690C7E41541CE2200A2D125 /* ViewController.xib */; };
+		6690C7F51541D7CE00A2D125 /* ColorBarsPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690C7F41541D7CE00A2D125 /* ColorBarsPhoto.png */; };
+		6690C8011541E3FC00A2D125 /* SplitFlapServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6690C7FC1541E3FB00A2D125 /* SplitFlapServer.m */; };
+		6690C8021541E3FC00A2D125 /* SFDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 6690C7FE1541E3FC00A2D125 /* SFDevice.m */; };
+		6690C8031541E3FC00A2D125 /* ZMQServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8001541E3FC00A2D125 /* ZMQServer.m */; };
+		6690C8291541E44D00A2D125 /* zclock.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8171541E44D00A2D125 /* zclock.c */; };
+		6690C82A1541E44D00A2D125 /* zctx.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8181541E44D00A2D125 /* zctx.c */; };
+		6690C82B1541E44D00A2D125 /* zfile.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8191541E44D00A2D125 /* zfile.c */; };
+		6690C82C1541E44D00A2D125 /* zframe.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C81A1541E44D00A2D125 /* zframe.c */; };
+		6690C82D1541E44D00A2D125 /* zhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C81B1541E44D00A2D125 /* zhash.c */; };
+		6690C82E1541E44D00A2D125 /* zlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C81C1541E44D00A2D125 /* zlist.c */; };
+		6690C82F1541E44D00A2D125 /* zloop.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C81D1541E44D00A2D125 /* zloop.c */; };
+		6690C8301541E44D00A2D125 /* zmsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C81E1541E44D00A2D125 /* zmsg.c */; };
+		6690C8311541E44D00A2D125 /* zsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C81F1541E44D00A2D125 /* zsocket.c */; };
+		6690C8321541E44D00A2D125 /* zsockopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8201541E44D00A2D125 /* zsockopt.c */; };
+		6690C8331541E44D00A2D125 /* zstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8211541E44D00A2D125 /* zstr.c */; };
+		6690C8341541E44D00A2D125 /* zthread.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8221541E44D00A2D125 /* zthread.c */; };
+		6690C8351541E44D00A2D125 /* libzmq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690C8281541E44D00A2D125 /* libzmq.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6690C7CB1541CE2200A2D125 /* SplitFlapPadController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitFlapPadController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6690C7CF1541CE2200A2D125 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6690C7D11541CE2200A2D125 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6690C7D31541CE2200A2D125 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6690C7D71541CE2200A2D125 /* SplitFlapPadController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplitFlapPadController-Info.plist"; sourceTree = "<group>"; };
+		6690C7D91541CE2200A2D125 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6690C7DB1541CE2200A2D125 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6690C7DD1541CE2200A2D125 /* SplitFlapPadController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitFlapPadController-Prefix.pch"; sourceTree = "<group>"; };
+		6690C7DE1541CE2200A2D125 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6690C7DF1541CE2200A2D125 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6690C7E11541CE2200A2D125 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6690C7E21541CE2200A2D125 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6690C7E51541CE2200A2D125 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6690C7F41541D7CE00A2D125 /* ColorBarsPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorBarsPhoto.png; sourceTree = "<group>"; };
+		6690C7FB1541E3FB00A2D125 /* SplitFlapServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFlapServer.h; sourceTree = "<group>"; };
+		6690C7FC1541E3FB00A2D125 /* SplitFlapServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFlapServer.m; sourceTree = "<group>"; };
+		6690C7FD1541E3FC00A2D125 /* SFDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDevice.h; sourceTree = "<group>"; };
+		6690C7FE1541E3FC00A2D125 /* SFDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDevice.m; sourceTree = "<group>"; };
+		6690C7FF1541E3FC00A2D125 /* ZMQServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMQServer.h; sourceTree = "<group>"; };
+		6690C8001541E3FC00A2D125 /* ZMQServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMQServer.m; sourceTree = "<group>"; };
+		6690C8081541E44D00A2D125 /* czmq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = czmq.h; sourceTree = "<group>"; };
+		6690C8091541E44D00A2D125 /* czmq_prelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = czmq_prelude.h; sourceTree = "<group>"; };
+		6690C80A1541E44D00A2D125 /* zclock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zclock.h; sourceTree = "<group>"; };
+		6690C80B1541E44D00A2D125 /* zctx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zctx.h; sourceTree = "<group>"; };
+		6690C80C1541E44D00A2D125 /* zfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zfile.h; sourceTree = "<group>"; };
+		6690C80D1541E44D00A2D125 /* zframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zframe.h; sourceTree = "<group>"; };
+		6690C80E1541E44D00A2D125 /* zhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhash.h; sourceTree = "<group>"; };
+		6690C80F1541E44D00A2D125 /* zlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlist.h; sourceTree = "<group>"; };
+		6690C8101541E44D00A2D125 /* zloop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zloop.h; sourceTree = "<group>"; };
+		6690C8111541E44D00A2D125 /* zmsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmsg.h; sourceTree = "<group>"; };
+		6690C8121541E44D00A2D125 /* zsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zsocket.h; sourceTree = "<group>"; };
+		6690C8131541E44D00A2D125 /* zsockopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zsockopt.h; sourceTree = "<group>"; };
+		6690C8141541E44D00A2D125 /* zstr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zstr.h; sourceTree = "<group>"; };
+		6690C8151541E44D00A2D125 /* zthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zthread.h; sourceTree = "<group>"; };
+		6690C8171541E44D00A2D125 /* zclock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zclock.c; sourceTree = "<group>"; };
+		6690C8181541E44D00A2D125 /* zctx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zctx.c; sourceTree = "<group>"; };
+		6690C8191541E44D00A2D125 /* zfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zfile.c; sourceTree = "<group>"; };
+		6690C81A1541E44D00A2D125 /* zframe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zframe.c; sourceTree = "<group>"; };
+		6690C81B1541E44D00A2D125 /* zhash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zhash.c; sourceTree = "<group>"; };
+		6690C81C1541E44D00A2D125 /* zlist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zlist.c; sourceTree = "<group>"; };
+		6690C81D1541E44D00A2D125 /* zloop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zloop.c; sourceTree = "<group>"; };
+		6690C81E1541E44D00A2D125 /* zmsg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zmsg.c; sourceTree = "<group>"; };
+		6690C81F1541E44D00A2D125 /* zsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zsocket.c; sourceTree = "<group>"; };
+		6690C8201541E44D00A2D125 /* zsockopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zsockopt.c; sourceTree = "<group>"; };
+		6690C8211541E44D00A2D125 /* zstr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zstr.c; sourceTree = "<group>"; };
+		6690C8221541E44D00A2D125 /* zthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zthread.c; sourceTree = "<group>"; };
+		6690C8241541E44D00A2D125 /* zmq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq.h; sourceTree = "<group>"; };
+		6690C8251541E44D00A2D125 /* zmq.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = zmq.hpp; sourceTree = "<group>"; };
+		6690C8261541E44D00A2D125 /* zmq_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq_utils.h; sourceTree = "<group>"; };
+		6690C8281541E44D00A2D125 /* libzmq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzmq.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6690C7C81541CE2200A2D125 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6690C7D01541CE2200A2D125 /* UIKit.framework in Frameworks */,
+				6690C7D21541CE2200A2D125 /* Foundation.framework in Frameworks */,
+				6690C7D41541CE2200A2D125 /* CoreGraphics.framework in Frameworks */,
+				6690C8351541E44D00A2D125 /* libzmq.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6690C7C01541CE2200A2D125 = {
+			isa = PBXGroup;
+			children = (
+				6690C7D51541CE2200A2D125 /* SplitFlapPadController */,
+				6690C7CE1541CE2200A2D125 /* Frameworks */,
+				6690C7CC1541CE2200A2D125 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6690C7CC1541CE2200A2D125 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6690C7CB1541CE2200A2D125 /* SplitFlapPadController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6690C7CE1541CE2200A2D125 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6690C7CF1541CE2200A2D125 /* UIKit.framework */,
+				6690C7D11541CE2200A2D125 /* Foundation.framework */,
+				6690C7D31541CE2200A2D125 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6690C7D51541CE2200A2D125 /* SplitFlapPadController */ = {
+			isa = PBXGroup;
+			children = (
+				6690C7E11541CE2200A2D125 /* ViewController.h */,
+				6690C7E21541CE2200A2D125 /* ViewController.m */,
+				6690C7E41541CE2200A2D125 /* ViewController.xib */,
+				6690C7F41541D7CE00A2D125 /* ColorBarsPhoto.png */,
+				6690C7DE1541CE2200A2D125 /* AppDelegate.h */,
+				6690C7DF1541CE2200A2D125 /* AppDelegate.m */,
+				6690C8041541E40200A2D125 /* Server */,
+				6690C8051541E44D00A2D125 /* ZeroMQ */,
+				6690C7D61541CE2200A2D125 /* Supporting Files */,
+			);
+			path = SplitFlapPadController;
+			sourceTree = "<group>";
+		};
+		6690C7D61541CE2200A2D125 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6690C7D71541CE2200A2D125 /* SplitFlapPadController-Info.plist */,
+				6690C7D81541CE2200A2D125 /* InfoPlist.strings */,
+				6690C7DB1541CE2200A2D125 /* main.m */,
+				6690C7DD1541CE2200A2D125 /* SplitFlapPadController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6690C8041541E40200A2D125 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				6690C7FB1541E3FB00A2D125 /* SplitFlapServer.h */,
+				6690C7FC1541E3FB00A2D125 /* SplitFlapServer.m */,
+				6690C7FD1541E3FC00A2D125 /* SFDevice.h */,
+				6690C7FE1541E3FC00A2D125 /* SFDevice.m */,
+				6690C7FF1541E3FC00A2D125 /* ZMQServer.h */,
+				6690C8001541E3FC00A2D125 /* ZMQServer.m */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		6690C8051541E44D00A2D125 /* ZeroMQ */ = {
+			isa = PBXGroup;
+			children = (
+				6690C8061541E44D00A2D125 /* czmq */,
+				6690C8231541E44D00A2D125 /* include */,
+				6690C8271541E44D00A2D125 /* lib */,
+			);
+			path = ZeroMQ;
+			sourceTree = SOURCE_ROOT;
+		};
+		6690C8061541E44D00A2D125 /* czmq */ = {
+			isa = PBXGroup;
+			children = (
+				6690C8071541E44D00A2D125 /* include */,
+				6690C8161541E44D00A2D125 /* src */,
+			);
+			path = czmq;
+			sourceTree = "<group>";
+		};
+		6690C8071541E44D00A2D125 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6690C8081541E44D00A2D125 /* czmq.h */,
+				6690C8091541E44D00A2D125 /* czmq_prelude.h */,
+				6690C80A1541E44D00A2D125 /* zclock.h */,
+				6690C80B1541E44D00A2D125 /* zctx.h */,
+				6690C80C1541E44D00A2D125 /* zfile.h */,
+				6690C80D1541E44D00A2D125 /* zframe.h */,
+				6690C80E1541E44D00A2D125 /* zhash.h */,
+				6690C80F1541E44D00A2D125 /* zlist.h */,
+				6690C8101541E44D00A2D125 /* zloop.h */,
+				6690C8111541E44D00A2D125 /* zmsg.h */,
+				6690C8121541E44D00A2D125 /* zsocket.h */,
+				6690C8131541E44D00A2D125 /* zsockopt.h */,
+				6690C8141541E44D00A2D125 /* zstr.h */,
+				6690C8151541E44D00A2D125 /* zthread.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		6690C8161541E44D00A2D125 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6690C8171541E44D00A2D125 /* zclock.c */,
+				6690C8181541E44D00A2D125 /* zctx.c */,
+				6690C8191541E44D00A2D125 /* zfile.c */,
+				6690C81A1541E44D00A2D125 /* zframe.c */,
+				6690C81B1541E44D00A2D125 /* zhash.c */,
+				6690C81C1541E44D00A2D125 /* zlist.c */,
+				6690C81D1541E44D00A2D125 /* zloop.c */,
+				6690C81E1541E44D00A2D125 /* zmsg.c */,
+				6690C81F1541E44D00A2D125 /* zsocket.c */,
+				6690C8201541E44D00A2D125 /* zsockopt.c */,
+				6690C8211541E44D00A2D125 /* zstr.c */,
+				6690C8221541E44D00A2D125 /* zthread.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		6690C8231541E44D00A2D125 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6690C8241541E44D00A2D125 /* zmq.h */,
+				6690C8251541E44D00A2D125 /* zmq.hpp */,
+				6690C8261541E44D00A2D125 /* zmq_utils.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		6690C8271541E44D00A2D125 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				6690C8281541E44D00A2D125 /* libzmq.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6690C7CA1541CE2200A2D125 /* SplitFlapPadController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6690C7E91541CE2200A2D125 /* Build configuration list for PBXNativeTarget "SplitFlapPadController" */;
+			buildPhases = (
+				6690C7C71541CE2200A2D125 /* Sources */,
+				6690C7C81541CE2200A2D125 /* Frameworks */,
+				6690C7C91541CE2200A2D125 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SplitFlapPadController;
+			productName = SplitFlapPadController;
+			productReference = 6690C7CB1541CE2200A2D125 /* SplitFlapPadController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6690C7C21541CE2200A2D125 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Big Nerd Ranch";
+			};
+			buildConfigurationList = 6690C7C51541CE2200A2D125 /* Build configuration list for PBXProject "SplitFlapPadController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6690C7C01541CE2200A2D125;
+			productRefGroup = 6690C7CC1541CE2200A2D125 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6690C7CA1541CE2200A2D125 /* SplitFlapPadController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6690C7C91541CE2200A2D125 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6690C7DA1541CE2200A2D125 /* InfoPlist.strings in Resources */,
+				6690C7E61541CE2200A2D125 /* ViewController.xib in Resources */,
+				6690C7F51541D7CE00A2D125 /* ColorBarsPhoto.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6690C7C71541CE2200A2D125 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6690C7DC1541CE2200A2D125 /* main.m in Sources */,
+				6690C7E01541CE2200A2D125 /* AppDelegate.m in Sources */,
+				6690C7E31541CE2200A2D125 /* ViewController.m in Sources */,
+				6690C8011541E3FC00A2D125 /* SplitFlapServer.m in Sources */,
+				6690C8021541E3FC00A2D125 /* SFDevice.m in Sources */,
+				6690C8031541E3FC00A2D125 /* ZMQServer.m in Sources */,
+				6690C8291541E44D00A2D125 /* zclock.c in Sources */,
+				6690C82A1541E44D00A2D125 /* zctx.c in Sources */,
+				6690C82B1541E44D00A2D125 /* zfile.c in Sources */,
+				6690C82C1541E44D00A2D125 /* zframe.c in Sources */,
+				6690C82D1541E44D00A2D125 /* zhash.c in Sources */,
+				6690C82E1541E44D00A2D125 /* zlist.c in Sources */,
+				6690C82F1541E44D00A2D125 /* zloop.c in Sources */,
+				6690C8301541E44D00A2D125 /* zmsg.c in Sources */,
+				6690C8311541E44D00A2D125 /* zsocket.c in Sources */,
+				6690C8321541E44D00A2D125 /* zsockopt.c in Sources */,
+				6690C8331541E44D00A2D125 /* zstr.c in Sources */,
+				6690C8341541E44D00A2D125 /* zthread.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6690C7D81541CE2200A2D125 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6690C7D91541CE2200A2D125 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6690C7E41541CE2200A2D125 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6690C7E51541CE2200A2D125 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6690C7E71541CE2200A2D125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		6690C7E81541CE2200A2D125 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6690C7EA1541CE2200A2D125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SplitFlapPadController/SplitFlapPadController-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					ZeroMQ/include,
+					ZeroMQ/czmq/include,
+				);
+				INFOPLIST_FILE = "SplitFlapPadController/SplitFlapPadController-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ZeroMQ/lib\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6690C7EB1541CE2200A2D125 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SplitFlapPadController/SplitFlapPadController-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					ZeroMQ/include,
+					ZeroMQ/czmq/include,
+				);
+				INFOPLIST_FILE = "SplitFlapPadController/SplitFlapPadController-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ZeroMQ/lib\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6690C7C51541CE2200A2D125 /* Build configuration list for PBXProject "SplitFlapPadController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6690C7E71541CE2200A2D125 /* Debug */,
+				6690C7E81541CE2200A2D125 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6690C7E91541CE2200A2D125 /* Build configuration list for PBXNativeTarget "SplitFlapPadController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6690C7EA1541CE2200A2D125 /* Debug */,
+				6690C7EB1541CE2200A2D125 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6690C7C21541CE2200A2D125 /* Project object */;
+}

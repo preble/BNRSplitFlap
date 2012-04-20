@@ -149,6 +149,14 @@
 	mConnectedLayer.hidden = connected;
 }
 
+- (void)showColor:(UIColor *)color
+{
+	if (color)
+		mLabel.backgroundColor = color;
+	else
+		mLabel.backgroundColor = [UIColor clearColor];
+}
+
 #pragma mark SplitFlapClientDelegate
 
 - (void)splitFlapClientConnected:(SplitFlapClient *)client
@@ -165,6 +173,7 @@
 
 - (void)splitFlapClient:(SplitFlapClient *)client displayText:(NSString *)text
 {
+	[self showColor:nil];
 	[self setString:text];
 }
 
@@ -190,6 +199,11 @@
 	mAudioUpdateTimer = nil;
 	
 	return [[self audioController] peak];
+}
+
+- (void)splitFlapClient:(SplitFlapClient *)client displayColor:(UIColor *)color
+{
+	[self showColor:color];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "Digit.h"
 #import "Flap.h"
 #import "BitmapFont.h"
+#import <GLKit/GLKit.h>
 
 @implementation Digit
 
@@ -35,6 +36,16 @@
 		mFlaps = flaps;
 		mTopCharacterIndex = 0;
 		mTicksUntilNextTrip = NSUIntegerMax;
+		
+		NSError *err;
+		mFlapTexture = [GLKTextureLoader textureWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Flap" withExtension:@"png"]
+														  options:nil
+															error:&err];
+		if (!mFlapTexture)
+		{
+			NSLog(@"Error loading flap texture: %@", err);
+		}
+
 		
 		[self setCharacter:@"A" animated:YES];
     }

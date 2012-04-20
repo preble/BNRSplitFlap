@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class GLKTextureInfo;
+
 @interface Digit : NSObject {
 	NSArray *mCharacters;
 	NSUInteger mTopCharacterIndex; // index of the character/flap that is at the top, ready to be tripped
 	NSUInteger mTicksUntilNextTrip;
 	NSString *mDesiredCharacter;
+	GLKTextureInfo *mFlapTexture;
 }
 
 @property (nonatomic, strong) NSArray *flaps;
