@@ -128,9 +128,9 @@
 		zmq_send(mReqSocket, &msg, 0);
 		zmq_msg_close(&msg);
 
-		// Wait for a response, but only for 2s:
+		// Wait for a response, but only for 5s:
 		zmq_pollitem_t pollitems[] = { { mReqSocket, 0, ZMQ_POLLIN, 0 } };
-		zmq_poll(pollitems, 1, 2000 * ZMQ_POLL_MSEC);
+		zmq_poll(pollitems, 1, 5000 * ZMQ_POLL_MSEC);
 		
 		if (pollitems[0].revents & ZMQ_POLLIN)
 		{
