@@ -21,6 +21,11 @@
 @synthesize textBankC;
 @synthesize textBankD;
 
+- (void)dealloc
+{
+	[mClockModeTimer invalidate];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -91,6 +96,57 @@
 	[[NSUserDefaults standardUserDefaults] setObject:self.textBankB.text forKey:@"splitflap.textBankB"];
 	[[NSUserDefaults standardUserDefaults] setObject:self.textBankC.text forKey:@"splitflap.textBankC"];
 	[[NSUserDefaults standardUserDefaults] setObject:self.textBankD.text forKey:@"splitflap.textBankD"];
+}
+
+- (void)setClockModeOn:(BOOL)run
+{
+	if (!run && mClockModeTimer)
+	{
+		[mClockModeTimer invalidate];
+		mClockModeTimer = nil;
+		return;
+	}
+	if (run && !mClockModeTimer)
+	{
+		mClockModeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(clockModeTimer:) userInfo:nil repeats:YES];
+	}
+}
+
+- (void)clockModeTimer:(NSTimer *)sender
+{
+	int numDevices = [[mServer orderedDevices] count];
+	if (numDevices <= 3)
+	{
+		// Show number of seconds.
+		NSTimeInterval t = [NSDate timeIntervalSinceReferenceDate];
+		int secs = ((int)t) % (10 * numDevices);
+		NSString *str = [NSString stringWithFormat:@"%d", secs];
+		[mServer displayString:str];
+	}
+	else if (numDevices == 4)
+	{
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"mmss"];
+		[mServer displayString:[df stringFromDate:[NSDate date]]];
+	}
+	else if (numDevices == 5)
+	{
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"mm:ss"];
+		[mServer displayString:[df stringFromDate:[NSDate date]]];
+	}
+	else if (numDevices == 6 || numDevices == 7)
+	{
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"HHmmss"];
+		[mServer displayString:[df stringFromDate:[NSDate date]]];
+	}
+	else if (numDevices >= 8)
+	{
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"HH:mm:ss"];
+		[mServer displayString:[df stringFromDate:[NSDate date]]];
+	}
 }
 
 #pragma mark - Image Processing
@@ -179,6 +235,11 @@ float ColorDistance(UIColor *color, int r, int g, int b)
 	[mServer displayString:[NSString stringWithFormat:@"%08d", r]];
 }
 
+- (IBAction)clockModeToggled:(UISwitch *)sender
+{
+	[self setClockModeOn:[sender isOn]];
+}
+
 - (IBAction)sendA:(id)sender
 {
 	[mServer displayString:self.textBankA.text];
@@ -198,6 +259,8 @@ float ColorDistance(UIColor *color, int r, int g, int b)
 
 - (IBAction)camera:(id)sender
 {
+	[mServer displayColors:mColors];
+	
 	UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
 	ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
 	ipc.delegate = self;

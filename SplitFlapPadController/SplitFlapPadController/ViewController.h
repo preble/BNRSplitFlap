@@ -14,6 +14,7 @@
 	UIPopoverController *mImagePickerPopover;
 	SplitFlapServer *mServer;
 	NSArray *mColors;
+	NSTimer *mClockModeTimer;
 }
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 
@@ -30,6 +31,7 @@
 - (IBAction)camera:(id)sender;
 - (IBAction)colors:(id)sender;
 - (IBAction)randomText:(id)sender;
+- (IBAction)clockModeToggled:(id)sender;
 
 - (void)saveTextBanks;
 
