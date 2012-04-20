@@ -161,12 +161,14 @@
 
 - (void)splitFlapClientConnected:(SplitFlapClient *)client
 {
+	[self showColor:nil];
 	[self showConnected:YES];
 	mHeartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat:) userInfo:nil repeats:YES];
 }
 
 - (void)splitFlapClientDisconnected:(SplitFlapClient *)client
 {
+	[self showColor:nil];
 	[self showConnected:NO];
 	[mHeartbeatTimer invalidate];
 }
