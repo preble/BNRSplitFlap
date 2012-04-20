@@ -106,7 +106,7 @@
 		zsocket_bind(mPubSocket, "tcp://%s:%d", [host UTF8String], basePort+1);
 	});
 	
-	mNetService = [[NSNetService alloc] initWithDomain:@"" type:@"_splitflap2._tcp" name:@"server" port:basePort];
+	mNetService = [[NSNetService alloc] initWithDomain:@"" type:@"_splitflap._tcp" name:@"server" port:basePort];
 	[mNetService setDelegate:self];
 	[mNetService publish];
 	return YES;

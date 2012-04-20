@@ -149,13 +149,46 @@
 }
 
 - (void)drawOpenGL
-{
+{	
+#if 0
+	glEnable(GL_LIGHTING);
+	
+	float ambient[] = {0.0, 0.0, 0.0, 1.0};
+	float diffuse[] = {1.0, 1.0, 1.0, 1.0};
+	float specular[] = {0.1, 0.1, 0.1, 1.0};
+	float lightPos[] = {0.0, 0.0, 10.0, 1.0}; // omni from this pos.
+	
+	glDisable(GL_CULL_FACE);
+	glEnable(GL_LIGHT0);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+	
+	GLfloat one[] = { 1.0f };
+	GLfloat no_shininess[] = { 0.0f };
+	GLfloat diffuseMat[] = {1,1,1,1};
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, no_shininess);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, diffuseMat);
+#endif
+	
 	glEnable(GL_TEXTURE_2D);
 	
 	for (Flap *flap in [self flapsForDrawing])
 	{
 		[flap drawOpenGL];
 	}
+
+	GLfloat lineVerts[] = {-1, 0, 1, 0};
+
+	glVertexPointer(2, GL_FLOAT, 0, lineVerts);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	glLineWidth(4);
+	glColor4f(0, 0, 0, 1);
+	glDrawArrays(GL_LINES, 0, 2);
+
 }
 
 @end

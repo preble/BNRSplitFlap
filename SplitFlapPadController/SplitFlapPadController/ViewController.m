@@ -119,7 +119,7 @@
 	{
 		// Show number of seconds.
 		NSTimeInterval t = [NSDate timeIntervalSinceReferenceDate];
-		int secs = ((int)t) % (10 * numDevices);
+		int secs = ((int)t) % (int)powf(10, numDevices);
 		NSString *str = [NSString stringWithFormat:@"%d", secs];
 		[mServer displayString:str];
 	}
