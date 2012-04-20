@@ -168,6 +168,8 @@
 
 - (void)displayString:(NSString *)str
 {
+	str = [str uppercaseString];
+	
 	NSArray *devices = [self orderedDevices];
 	NSMutableDictionary *deviceChars = [NSMutableDictionary dictionary];
 	for (NSUInteger index = 0; index < [devices count]; index++)

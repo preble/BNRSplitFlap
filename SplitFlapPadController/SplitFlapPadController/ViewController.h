@@ -17,8 +17,20 @@
 }
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 
+@property (strong, nonatomic) IBOutlet UITextField *textBankA;
+@property (strong, nonatomic) IBOutlet UITextField *textBankB;
+@property (strong, nonatomic) IBOutlet UITextField *textBankC;
+@property (strong, nonatomic) IBOutlet UITextField *textBankD;
+
+- (IBAction)sendA:(id)sender;
+- (IBAction)sendB:(id)sender;
+- (IBAction)sendC:(id)sender;
+- (IBAction)sendD:(id)sender;
+
 - (IBAction)camera:(id)sender;
 - (IBAction)colors:(id)sender;
 - (IBAction)randomText:(id)sender;
+
+- (void)saveTextBanks;
 
 @end

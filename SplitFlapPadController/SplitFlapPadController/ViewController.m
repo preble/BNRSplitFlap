@@ -16,6 +16,10 @@
 
 @implementation ViewController
 @synthesize statusLabel;
+@synthesize textBankA;
+@synthesize textBankB;
+@synthesize textBankC;
+@synthesize textBankD;
 
 - (void)viewDidLoad
 {
@@ -36,6 +40,10 @@
 - (void)viewDidUnload
 {
 	[self setStatusLabel:nil];
+	[self setTextBankA:nil];
+	[self setTextBankB:nil];
+	[self setTextBankC:nil];
+	[self setTextBankD:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -59,12 +67,30 @@
 	mServer = [[SplitFlapServer alloc] init];
 	mServer.delegate = self;
 	[self updateStatusText];
+	
+	[self loadTextBanks];
 }
 
 
 - (void)updateStatusText
 {
 	self.statusLabel.text = [NSString stringWithFormat:@"%d devices", [[mServer devices] count]];
+}
+
+- (void)loadTextBanks
+{
+	self.textBankA.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"splitflap.textBankA"];
+	self.textBankB.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"splitflap.textBankB"];
+	self.textBankC.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"splitflap.textBankC"];
+	self.textBankD.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"splitflap.textBankD"];
+}
+
+- (void)saveTextBanks
+{
+	[[NSUserDefaults standardUserDefaults] setObject:self.textBankA.text forKey:@"splitflap.textBankA"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.textBankB.text forKey:@"splitflap.textBankB"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.textBankC.text forKey:@"splitflap.textBankC"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.textBankD.text forKey:@"splitflap.textBankD"];
 }
 
 #pragma mark - Image Processing
@@ -151,6 +177,23 @@ float ColorDistance(UIColor *color, int r, int g, int b)
 {
 	long r = random();
 	[mServer displayString:[NSString stringWithFormat:@"%08d", r]];
+}
+
+- (IBAction)sendA:(id)sender
+{
+	[mServer displayString:self.textBankA.text];
+}
+- (IBAction)sendB:(id)sender
+{
+	[mServer displayString:self.textBankB.text];
+}
+- (IBAction)sendC:(id)sender
+{
+	[mServer displayString:self.textBankC.text];
+}
+- (IBAction)sendD:(id)sender
+{
+	[mServer displayString:self.textBankD.text];
 }
 
 - (IBAction)camera:(id)sender
