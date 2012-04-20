@@ -28,6 +28,13 @@
 		GLKView *view = [[GLKView alloc] initWithFrame:CGRectZero context:context];
 		self.view = view;
 		
+		mConnectedLayer = [CALayer layer];
+		mConnectedLayer.bounds = CGRectMake(0, 0, 10, 10);
+		mConnectedLayer.backgroundColor = [[UIColor redColor] CGColor];
+		mConnectedLayer.position = CGPointZero;
+		mConnectedLayer.anchorPoint = CGPointZero;
+		[self.view.layer addSublayer:mConnectedLayer];
+		
 		mDigit = [[Digit alloc] init];
 	}
 	return self;
@@ -137,17 +144,22 @@
 	mLabel.text = [NSString stringWithFormat:@"%0.3f", [[self audioController] peak]];
 }
 
+- (void)showConnected:(BOOL)connected
+{
+	mConnectedLayer.hidden = connected;
+}
+
 #pragma mark SplitFlapClientDelegate
 
 - (void)splitFlapClientConnected:(SplitFlapClient *)client
 {
-	[self setString:@" "];
+	[self showConnected:YES];
 	mHeartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(heartbeat:) userInfo:nil repeats:YES];
 }
 
 - (void)splitFlapClientDisconnected:(SplitFlapClient *)client
 {
-	[self setString:@"X"];
+	[self showConnected:NO];
 	[mHeartbeatTimer invalidate];
 }
 

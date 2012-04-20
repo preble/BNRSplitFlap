@@ -21,6 +21,7 @@
 	NSTimer *mAudioUpdateTimer;
 	
 	UILabel *mLabel;
+	CALayer *mConnectedLayer;
 }
 
 @end
