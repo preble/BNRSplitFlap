@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SplitFlapServer.h"
 #import "SFDevice.h"
+#import "PingResponse.h"
 
 @interface AppDelegate () <SplitFlapServerDelegate>
 @end
@@ -113,6 +114,8 @@
 		}
 		else
 		{
+            
+            
 			NSLog(@"Results:");
 			for (NSString *beepId in results)
 			{
@@ -123,7 +126,106 @@
 					CGFloat value = [[deviceResults objectForKey:receiverId] floatValue];
 					NSLog(@"    %@   %0.3f", receiverId, value);
 				}
+                
 			}
+            
+            // sort device results by lowest
+            // make discrete
+            // add to SFDevice
+            // loop through devices
+            // create comparisons
+            
+            for(int idx=0; idx < [[mServer devices] count]; idx++){
+                SFDevice *currentDevice = [[mServer devices] objectAtIndex:idx];
+                // get result reports and set PingResponse
+                NSDictionary *deviceResults = [results objectForKey:currentDevice.identifier];
+				for (NSString *receiverId in deviceResults){
+                    
+                    PingResponse *response = [[PingResponse alloc] init];
+                    [response setBroadcastId:currentDevice.identifier];
+                    [response setReceiverId:receiverId];
+                    
+                    CGFloat value = [[deviceResults objectForKey:receiverId] floatValue];
+                    [response setRaw:value];
+                    
+                    [[mServer deviceForId:receiverId] addPingResult:response];
+                }
+            }
+            
+            
+            
+            // Set the discrete values for all of our ping responses:
+            for(int idx=0; idx < [[mServer devices] count]; idx++){
+                SFDevice *currentDevice = [[mServer devices] objectAtIndex:idx];
+                
+                NSArray *sortedByRaw = [currentDevice sortPingResponsesByRaw];
+                if([sortedByRaw count]>0){
+                    float currentRaw = [[sortedByRaw objectAtIndex:0] raw];
+                    int currentDiscrete = 1;
+                    for (PingResponse *pr in sortedByRaw)
+                    {
+                        if (fabsf(currentRaw - pr.raw) > 2.0)
+                        {
+                            currentDiscrete++;
+                            currentRaw = pr.raw;
+                        }
+                        pr.discrete = currentDiscrete;
+                    }
+                }
+            }
+            
+            for(int idx=0; idx < [[mServer devices] count]; idx++){
+                SFDevice *currentDevice = [[mServer devices] objectAtIndex:idx];
+                
+
+                // new way using graph theory, courtesy of Galvin
+                NSMutableArray *possibleOrder = [currentDevice followDiscretesWithPath:nil andCompletionSize:[[mServer devices] count]];                
+                if(possibleOrder)
+                    NSLog(@">>> possible order %@",possibleOrder);
+                else
+                    NSLog(@">>> no path from this device");
+
+                /*
+                 // old way using weird algorithm
+                 // sort based on discretes
+                int currentDiscrete = 0;
+                NSMutableArray *sortedByDiscrete = [[currentDevice sortPingResponsesByDiscrete] mutableCopy];
+                NSLog(@"sortedByDiscrete: %@",sortedByDiscrete);
+                
+
+                [possibleOrder addObject:currentDevice];
+                while([sortedByDiscrete count] > 1){
+                    NSLog(@"working order: %@",possibleOrder);
+                    
+                    SFDevice *firstDiscrete = [mServer deviceForId:[[sortedByDiscrete objectAtIndex:currentDiscrete] broadcastId]];
+                    SFDevice *secondDiscrete = [mServer deviceForId:[[sortedByDiscrete objectAtIndex:currentDiscrete+1] broadcastId]];
+                    SFDevice *closerDevice = [currentDevice closerDevice:firstDiscrete orDevice:secondDiscrete];
+                    
+//                    NSLog(@"first: %@",firstDiscrete);
+//                    NSLog(@"second: %@",secondDiscrete);
+//                    NSLog(@"closer: %@",closerDevice);
+                    
+                    if(closerDevice){
+                        // one is closer
+                        [possibleOrder addObject:closerDevice];
+                        [sortedByDiscrete removeObject:[currentDevice pingResponseFor:closerDevice.identifier]];
+                    }else{
+                        // both are closest, put it in the middle
+//                        int idx = [possibleOrder indexOfObject:currentDevice];
+                        [possibleOrder insertObject:firstDiscrete atIndex:0];
+                        [sortedByDiscrete removeObjectAtIndex:currentDiscrete];
+                    }
+                    currentDiscrete++;
+                }
+                
+                SFDevice *lastDiscrete = [mServer deviceForId:[[sortedByDiscrete objectAtIndex:[sortedByDiscrete count]-1] broadcastId]];
+                [possibleOrder addObject:lastDiscrete];
+                */
+                
+                
+                
+
+            }
 		}
 	};
 	
@@ -134,6 +236,11 @@
 - (IBAction)stopListening:(id)sender
 {
 }
+
+
+#pragma mark - Sort code
+
+
 
 
 #pragma mark - SplitFlapServerDelegate
@@ -162,6 +269,7 @@
 			NSLog(@"Got reading from %@: %0.3f", device, value);
 			[readings setObject:device
 						 forKey:[NSNumber numberWithFloat:value]];
+            // add reading to 
 		}
 		else
 		{
@@ -175,6 +283,9 @@
 								   device:device];
 			}
 		}
+        
+        // do some sorting?
+        
 		
 	}];
 }

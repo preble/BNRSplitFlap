@@ -99,6 +99,7 @@
 - (SFDevice *)createDevice
 {
 	SFDevice *device = [SFDevice device];
+    [device setServer:self];
 	[mDevices setObject:device forKey:device.identifier];
 	[self notifyDevicesChanged];
 	return device;
@@ -191,6 +192,14 @@
 - (NSArray *)devices
 {
 	return [mDevices allValues];
+}
+
+- (SFDevice *)deviceForId:(NSString *)deviceId{
+    for(SFDevice *device in self.devices){
+        if([device.identifier isEqualToString:deviceId])
+            return device;
+    }
+    return nil;
 }
 
 @end

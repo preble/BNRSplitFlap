@@ -21,11 +21,14 @@
 @property (nonatomic, readonly) NSArray *devices;
 
 - (void)displayString:(NSString *)str;
+- (SFDevice *)deviceForId:(NSString *)deviceId;
 - (void)displayCharacter:(NSString *)str device:(SFDevice *)device;
 
 - (void)beepDevice:(SFDevice *)device;
 - (void)startDevicesListening;
 - (void)stopDevicesListening;
+
+
 
 @end
 
