@@ -105,6 +105,8 @@
 	device.identifier = identifier;
 	[mDevices setObject:device forKey:identifier];
 	[self notifyDevicesChanged];
+	if (mOrderedDevices)
+		[mOrderedDevices addObject:device];
 	return device;
 }
 
@@ -122,6 +124,7 @@
 		if ([device.lastHeartbeat compare:timeout] == NSOrderedAscending)
 		{
 			[mDevices removeObjectForKey:device.identifier];
+			[mOrderedDevices removeObject:device];
 			NSLog(@"Device %@ timed out.", device);
 			removedAny = YES;
 		}
@@ -225,14 +228,14 @@
 - (NSArray *)orderedDevices
 {
 	if (mOrderedDevices)
-		return mOrderedDevices;
+		return [mOrderedDevices copy];
 	else
 		return [mDevices allValues];
 }
 
 - (void)setOrderedDevices:(NSArray *)orderedDevices
 {
-	mOrderedDevices = orderedDevices;
+	mOrderedDevices = [orderedDevices mutableCopy];
 }
 
 @end

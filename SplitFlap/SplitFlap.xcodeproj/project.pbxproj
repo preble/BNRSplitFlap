@@ -32,6 +32,8 @@
 		6690C7B81540E53200A2D125 /* 440.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6690C7B71540E53200A2D125 /* 440.wav */; };
 		6690C7BA1541C3C400A2D125 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690C7B91541C3C400A2D125 /* QuartzCore.framework */; };
 		6690C7BC1541C6F300A2D125 /* Flap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690C7BB1541C6F300A2D125 /* Flap.png */; };
+		6690C8461542074D00A2D125 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690C8451542074D00A2D125 /* Icon.png */; };
+		6690C8481542075700A2D125 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690C8471542075700A2D125 /* Icon.png */; };
 		66A994D01540BAAD0088B035 /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A994CF1540BAAD0088B035 /* AudioController.m */; };
 		66A994D61540BAD90088B035 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66A994D21540BAD90088B035 /* coin.wav */; };
 		66A994D71540BAD90088B035 /* highlight.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66A994D31540BAD90088B035 /* highlight.wav */; };
@@ -99,6 +101,8 @@
 		6690C7B71540E53200A2D125 /* 440.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = 440.wav; path = Sounds/440.wav; sourceTree = SOURCE_ROOT; };
 		6690C7B91541C3C400A2D125 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6690C7BB1541C6F300A2D125 /* Flap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flap.png; sourceTree = "<group>"; };
+		6690C8451542074D00A2D125 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		6690C8471542075700A2D125 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		66A994CE1540BAAD0088B035 /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
 		66A994CF1540BAAD0088B035 /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioController.m; sourceTree = "<group>"; };
 		66A994D21540BAD90088B035 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		664C5FB4153F765B00699F4A = {
 			isa = PBXGroup;
 			children = (
+				6690C8471542075700A2D125 /* Icon.png */,
 				664C5FC9153F765B00699F4A /* SplitFlap */,
 				664C5FC2153F765B00699F4A /* Frameworks */,
 				664C5FC0153F765B00699F4A /* Products */,
@@ -322,6 +327,7 @@
 		66B151D6154065F200D13CD3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6690C8451542074D00A2D125 /* Icon.png */,
 				6690C7BB1541C6F300A2D125 /* Flap.png */,
 				66B151D7154065F200D13CD3 /* BitmapFont.plist */,
 				66B151D8154065F200D13CD3 /* BitmapFont.png */,
@@ -389,6 +395,8 @@
 				66A994D91540BAD90088B035 /* pain.wav in Resources */,
 				6690C7B81540E53200A2D125 /* 440.wav in Resources */,
 				6690C7BC1541C6F300A2D125 /* Flap.png in Resources */,
+				6690C8461542074D00A2D125 /* Icon.png in Resources */,
+				6690C8481542075700A2D125 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

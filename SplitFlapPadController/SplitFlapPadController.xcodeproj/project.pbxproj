@@ -32,6 +32,8 @@
 		6690C8331541E44D00A2D125 /* zstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8211541E44D00A2D125 /* zstr.c */; };
 		6690C8341541E44D00A2D125 /* zthread.c in Sources */ = {isa = PBXBuildFile; fileRef = 6690C8221541E44D00A2D125 /* zthread.c */; };
 		6690C8351541E44D00A2D125 /* libzmq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690C8281541E44D00A2D125 /* libzmq.a */; };
+		6690C84A154207C800A2D125 /* Icon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690C849154207C700A2D125 /* Icon72.png */; };
+		6690C84C154207D000A2D125 /* Icon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690C84B154207D000A2D125 /* Icon72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		6690C8251541E44D00A2D125 /* zmq.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = zmq.hpp; sourceTree = "<group>"; };
 		6690C8261541E44D00A2D125 /* zmq_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq_utils.h; sourceTree = "<group>"; };
 		6690C8281541E44D00A2D125 /* libzmq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzmq.a; sourceTree = "<group>"; };
+		6690C849154207C700A2D125 /* Icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon72.png; path = ../../SplitFlap/Images/Icon72.png; sourceTree = "<group>"; };
+		6690C84B154207D000A2D125 /* Icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon72.png; path = ../Icon72.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 		6690C7D51541CE2200A2D125 /* SplitFlapPadController */ = {
 			isa = PBXGroup;
 			children = (
+				6690C84B154207D000A2D125 /* Icon72.png */,
+				6690C849154207C700A2D125 /* Icon72.png */,
 				6690C7E11541CE2200A2D125 /* ViewController.h */,
 				6690C7E21541CE2200A2D125 /* ViewController.m */,
 				6690C7E41541CE2200A2D125 /* ViewController.xib */,
@@ -300,6 +306,8 @@
 				6690C7DA1541CE2200A2D125 /* InfoPlist.strings in Resources */,
 				6690C7E61541CE2200A2D125 /* ViewController.xib in Resources */,
 				6690C7F51541D7CE00A2D125 /* ColorBarsPhoto.png in Resources */,
+				6690C84A154207C800A2D125 /* Icon72.png in Resources */,
+				6690C84C154207D000A2D125 /* Icon72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@
 	ZMQServer *mServer;
 	NSMutableDictionary *mDevices;
 	NSTimer *mDeviceTimeoutTimer;
-	NSArray *mOrderedDevices;
+	NSMutableArray *mOrderedDevices;
 }
 @property (nonatomic, weak) id<SplitFlapServerDelegate> delegate;
 @property (nonatomic, readonly) NSArray *devices;
