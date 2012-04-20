@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SplitFlapServer.h"
+#import "SFDevice.h"
 
 @interface AppDelegate () <SplitFlapServerDelegate>
 @end
@@ -72,9 +73,10 @@
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 				
-				mReportingBlock(nil, 0);
+				void (^block)(SFDevice *device, CGFloat value) = mReportingBlock;
 				mReportingBlock = nil;
-			
+				
+				block(nil, 0);
 			});
 			
 		});
@@ -84,15 +86,49 @@
 
 - (IBAction)startListening:(id)sender
 {
-	SFDevice *device = [[mServer devices] objectAtIndex:0];
-	[self beginDiscoveryWithDevice:device valueBlock:^(SFDevice *device, CGFloat value) {
+	NSMutableDictionary *results = [NSMutableDictionary dictionary];
+	NSMutableArray *devices = [[mServer devices] mutableCopy];
+	
+	__block void (^block)();
+	block = ^{
 		
-		if (device)
-			NSLog(@"Got reading from device: %0.3f", value);
+		if (devices.count > 0)
+		{
+			SFDevice *beepDevice = [devices objectAtIndex:0];
+			[devices removeObjectAtIndex:0];
+			
+			NSMutableDictionary *deviceResults = [NSMutableDictionary dictionary];
+			[self beginDiscoveryWithDevice:beepDevice valueBlock:^(SFDevice *resultDevice, CGFloat value) {
+				if (resultDevice == nil)
+				{
+					[results setObject:deviceResults forKey:beepDevice.identifier];
+					block();
+				}
+				else
+				{
+					[deviceResults setObject:[NSNumber numberWithFloat:value]
+									  forKey:resultDevice.identifier];
+				}
+			}];
+		}
 		else
-			NSLog(@"timeout -- all done");
-		
-	}];
+		{
+			NSLog(@"Results:");
+			for (NSString *beepId in results)
+			{
+				NSDictionary *deviceResults = [results objectForKey:beepId];
+				NSLog(@"  %@ beep results:", beepId);
+				for (NSString *receiverId in deviceResults)
+				{
+					CGFloat value = [[deviceResults objectForKey:receiverId] floatValue];
+					NSLog(@"    %@   %0.3f", receiverId, value);
+				}
+			}
+		}
+	};
+	
+	block = [block copy];
+	block();
 }
 
 - (IBAction)stopListening:(id)sender

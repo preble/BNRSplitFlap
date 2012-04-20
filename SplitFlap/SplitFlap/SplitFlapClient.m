@@ -24,10 +24,12 @@
 			[weakSelf handleCommandFromServer:command];
 		};
 		
-		[mClient connectToHost:@"10.0.1.2" basePort:15780];
+		[mClient connectViaBonjourWithCompletionBlock:^(NSError *error) {
+			[self startHello];
+		}];
 		
-		[self startHello];
-
+//		[mClient connectToHost:@"10.1.10.31" basePort:15780];
+//		[self startHello];
     }
     return self;
 }

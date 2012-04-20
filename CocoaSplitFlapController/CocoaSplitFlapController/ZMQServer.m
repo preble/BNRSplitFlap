@@ -105,6 +105,10 @@
 	dispatch_async(mPubQueue, ^{
 		zsocket_bind(mPubSocket, "tcp://%s:%d", [host UTF8String], basePort+1);
 	});
+	
+	mNetService = [[NSNetService alloc] initWithDomain:@"" type:@"_splitflap._tcp" name:@"server" port:basePort];
+	[mNetService setDelegate:self];
+	[mNetService publish];
 	return YES;
 }
 
@@ -126,6 +130,14 @@
 		zmq_msg_close(&msg);
 	});
 }
+
+#pragma mark - NSNetServiceDelegate
+
+- (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
+{
+	NSLog(@"NSNetService failed to publish: %@", errorDict);
+}
+
 
 @end
 

@@ -40,6 +40,8 @@
 
 - (void)dealloc
 {
+	[mNetServiceBrowser setDelegate:nil];
+	
 	dispatch_sync(mReqQueue, ^{
 		zsocket_destroy(mReqContext, mReqSocket);
 		zctx_destroy(&mReqContext);
@@ -50,6 +52,18 @@
 	});
 	dispatch_release(mReqQueue);
 	dispatch_release(mSubQueue);
+}
+
+- (void)connectViaBonjourWithCompletionBlock:(void (^)(NSError *error))block;
+{
+	mConnectedBlock = [block copy];
+	
+	if (mNetServiceBrowser)
+		[mNetServiceBrowser setDelegate:nil];
+	
+	mNetServiceBrowser = [[NSNetServiceBrowser alloc] init];
+	[mNetServiceBrowser setDelegate:self];
+	[mNetServiceBrowser searchForServicesOfType:@"_splitflap._tcp" inDomain:@""];
 }
 
 - (BOOL)connectToHost:(NSString *)host basePort:(NSUInteger)basePort
@@ -150,6 +164,45 @@
 		}
 	});
 	return YES;
+}
+
+#pragma mark - NSNetServiceBrowserDelegate
+
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
+{
+	if (!mChosenService)
+	{
+		mChosenService = aNetService;
+		[mChosenService setDelegate:self];
+		[mChosenService resolveWithTimeout:10.0];
+	}
+}
+
+#pragma mark - NSNetServiceDelegate
+
+- (void)netServiceDidResolveAddress:(NSNetService *)sender
+{
+	NSString *host = [sender hostName];
+	NSInteger port = [sender port];
+	
+	NSData *data = [[sender addresses] objectAtIndex:0];
+	struct sockaddr_storage sockAddr;
+	[data getBytes:&sockAddr length:data.length];
+	
+	char szAddr[256];
+	getnameinfo(&sockAddr, data.length, szAddr, 256, 0, 0, NI_NUMERICHOST);
+	host = [NSString stringWithUTF8String:szAddr];
+
+	NSLog(@"Resolved host: %@:%d", host, port);
+	[self connectToHost:host basePort:port];
+	
+	mConnectedBlock(nil);
+	mConnectedBlock = nil;
+}
+
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
+{
+	NSLog(@"Failed to resolve net service: %@", errorDict);
 }
 
 @end

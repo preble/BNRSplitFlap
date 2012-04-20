@@ -134,7 +134,7 @@
 - (void)audioUpdateTimer:(NSTimer *)timer
 {
 	[[self audioController] updateLevels];
-	mLabel.text = [NSString stringWithFormat:@"%0.3f", [[self audioController] difference]];
+	mLabel.text = [NSString stringWithFormat:@"%0.3f", [[self audioController] peak]];
 }
 
 #pragma mark SplitFlapClientDelegate
@@ -177,7 +177,7 @@
 	[mAudioUpdateTimer invalidate];
 	mAudioUpdateTimer = nil;
 	
-	return [[self audioController] difference];
+	return [[self audioController] peak];
 }
 
 @end

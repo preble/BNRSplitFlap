@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <czmq.h>
 
-@interface ZMQServer : NSObject {
+@interface ZMQServer : NSObject <NSNetServiceDelegate> {
 	dispatch_queue_t mRepQueue;
 	dispatch_queue_t mPubQueue;
 	zctx_t *mRepContext;
@@ -17,6 +17,8 @@
 	void *mRepSocket;
 	void *mPubSocket;
 	BOOL mRunning;
+	
+	NSNetService *mNetService;
 }
 
 @property (nonatomic, copy) NSDictionary *(^commandBlock)(NSDictionary *command);
