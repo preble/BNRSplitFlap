@@ -190,7 +190,7 @@
 	[data getBytes:&sockAddr length:data.length];
 	
 	char szAddr[256];
-	getnameinfo(&sockAddr, data.length, szAddr, 256, 0, 0, NI_NUMERICHOST);
+	getnameinfo((struct sockaddr*)&sockAddr, data.length, szAddr, 256, 0, 0, NI_NUMERICHOST);
 	host = [NSString stringWithUTF8String:szAddr];
 
 	NSLog(@"Resolved host: %@:%d", host, port);
