@@ -29,6 +29,15 @@
 		664C603B153F863F00699F4A /* zstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C602F153F863F00699F4A /* zstr.c */; };
 		664C603C153F863F00699F4A /* zthread.c in Sources */ = {isa = PBXBuildFile; fileRef = 664C6030153F863F00699F4A /* zthread.c */; };
 		664C607C153FAE2B00699F4A /* SplitFlapClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 664C607B153FAE2B00699F4A /* SplitFlapClient.m */; };
+		6690C7B81540E53200A2D125 /* 440.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6690C7B71540E53200A2D125 /* 440.wav */; };
+		66A994D01540BAAD0088B035 /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A994CF1540BAAD0088B035 /* AudioController.m */; };
+		66A994D61540BAD90088B035 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66A994D21540BAD90088B035 /* coin.wav */; };
+		66A994D71540BAD90088B035 /* highlight.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66A994D31540BAD90088B035 /* highlight.wav */; };
+		66A994D81540BAD90088B035 /* impact.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66A994D41540BAD90088B035 /* impact.wav */; };
+		66A994D91540BAD90088B035 /* pain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66A994D51540BAD90088B035 /* pain.wav */; };
+		66A994DB1540BB760088B035 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A994DA1540BB760088B035 /* AVFoundation.framework */; };
+		66A994DD1540BB7C0088B035 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A994DC1540BB7B0088B035 /* CoreAudio.framework */; };
+		66A994DF1540BB8C0088B035 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A994DE1540BB8C0088B035 /* AudioToolbox.framework */; };
 		66B151CE1540639E00D13CD3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B151CD1540639E00D13CD3 /* GLKit.framework */; };
 		66B151D9154065F200D13CD3 /* BitmapFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66B151D7154065F200D13CD3 /* BitmapFont.plist */; };
 		66B151DA154065F200D13CD3 /* BitmapFont.png in Resources */ = {isa = PBXBuildFile; fileRef = 66B151D8154065F200D13CD3 /* BitmapFont.png */; };
@@ -85,6 +94,16 @@
 		664C6030153F863F00699F4A /* zthread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zthread.c; sourceTree = "<group>"; };
 		664C607A153FAE2B00699F4A /* SplitFlapClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitFlapClient.h; sourceTree = "<group>"; };
 		664C607B153FAE2B00699F4A /* SplitFlapClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitFlapClient.m; sourceTree = "<group>"; };
+		6690C7B71540E53200A2D125 /* 440.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = 440.wav; path = Sounds/440.wav; sourceTree = SOURCE_ROOT; };
+		66A994CE1540BAAD0088B035 /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
+		66A994CF1540BAAD0088B035 /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioController.m; sourceTree = "<group>"; };
+		66A994D21540BAD90088B035 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
+		66A994D31540BAD90088B035 /* highlight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = highlight.wav; sourceTree = "<group>"; };
+		66A994D41540BAD90088B035 /* impact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = impact.wav; sourceTree = "<group>"; };
+		66A994D51540BAD90088B035 /* pain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pain.wav; sourceTree = "<group>"; };
+		66A994DA1540BB760088B035 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		66A994DC1540BB7B0088B035 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		66A994DE1540BB8C0088B035 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		66B151CD1540639E00D13CD3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		66B151D7154065F200D13CD3 /* BitmapFont.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BitmapFont.plist; sourceTree = "<group>"; };
 		66B151D8154065F200D13CD3 /* BitmapFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BitmapFont.png; sourceTree = "<group>"; };
@@ -102,6 +121,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A994DF1540BB8C0088B035 /* AudioToolbox.framework in Frameworks */,
+				66A994DD1540BB7C0088B035 /* CoreAudio.framework in Frameworks */,
+				66A994DB1540BB760088B035 /* AVFoundation.framework in Frameworks */,
 				66B151E515406A8C00D13CD3 /* OpenGLES.framework in Frameworks */,
 				66B151CE1540639E00D13CD3 /* GLKit.framework in Frameworks */,
 				664C5FC4153F765B00699F4A /* UIKit.framework in Frameworks */,
@@ -134,6 +156,9 @@
 		664C5FC2153F765B00699F4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66A994DE1540BB8C0088B035 /* AudioToolbox.framework */,
+				66A994DC1540BB7B0088B035 /* CoreAudio.framework */,
+				66A994DA1540BB760088B035 /* AVFoundation.framework */,
 				66B151E415406A8C00D13CD3 /* OpenGLES.framework */,
 				66B151CD1540639E00D13CD3 /* GLKit.framework */,
 				664C5FC3153F765B00699F4A /* UIKit.framework */,
@@ -148,8 +173,10 @@
 			children = (
 				66B151CF154063BC00D13CD3 /* ZMQ Client API */,
 				66B151D0154063D000D13CD3 /* App */,
+				66A994CC1540BAA00088B035 /* Audio */,
 				66B151D1154063DC00D13CD3 /* Client UI */,
 				66B151D6154065F200D13CD3 /* Images */,
+				66A994D11540BAD90088B035 /* Sounds */,
 				664C5FCA153F765B00699F4A /* Supporting Files */,
 			);
 			path = SplitFlap;
@@ -226,6 +253,28 @@
 				664C6030153F863F00699F4A /* zthread.c */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		66A994CC1540BAA00088B035 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				66A994CE1540BAAD0088B035 /* AudioController.h */,
+				66A994CF1540BAAD0088B035 /* AudioController.m */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		66A994D11540BAD90088B035 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6690C7B71540E53200A2D125 /* 440.wav */,
+				66A994D21540BAD90088B035 /* coin.wav */,
+				66A994D31540BAD90088B035 /* highlight.wav */,
+				66A994D41540BAD90088B035 /* impact.wav */,
+				66A994D51540BAD90088B035 /* pain.wav */,
+			);
+			name = Sounds;
+			path = ../Sounds;
 			sourceTree = "<group>";
 		};
 		66B151CF154063BC00D13CD3 /* ZMQ Client API */ = {
@@ -327,6 +376,11 @@
 				664C5FCE153F765B00699F4A /* InfoPlist.strings in Resources */,
 				66B151D9154065F200D13CD3 /* BitmapFont.plist in Resources */,
 				66B151DA154065F200D13CD3 /* BitmapFont.png in Resources */,
+				66A994D61540BAD90088B035 /* coin.wav in Resources */,
+				66A994D71540BAD90088B035 /* highlight.wav in Resources */,
+				66A994D81540BAD90088B035 /* impact.wav in Resources */,
+				66A994D91540BAD90088B035 /* pain.wav in Resources */,
+				6690C7B81540E53200A2D125 /* 440.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +411,7 @@
 				66B151DD154067D600D13CD3 /* Flap.m in Sources */,
 				66B151E0154067F100D13CD3 /* Digit.m in Sources */,
 				66B151E3154068BA00D13CD3 /* BitmapFont.m in Sources */,
+				66A994D01540BAAD0088B035 /* AudioController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

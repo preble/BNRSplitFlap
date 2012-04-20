@@ -63,6 +63,7 @@
 	else if ([cmdName isEqualToString:@"tap"])
 	{
 		NSLog(@"got tap from %@", device);
+		[mDelegate splitFlapServer:self deviceTapped:device];
 	}
 	else if ([cmdName isEqualToString:@"beat"])
 	{
@@ -71,6 +72,12 @@
 		return [NSDictionary dictionaryWithObjectsAndKeys:
 				[NSNumber numberWithBool:(device != nil)], @"ok",
 				nil];
+	}
+	else if ([cmdName isEqualToString:@"report"])
+	{
+		CGFloat value = [[cmd objectForKey:@"value"] floatValue];
+		// We got 'value' from 'device'.
+		[mDelegate splitFlapServer:self device:device reportedValue:value];
 	}
 	else
 	{
@@ -125,14 +132,38 @@
 	return [mDevices allValues];
 }
 
-- (void)device:(SFDevice *)device displayCharacter:(unichar)ch
+- (void)displayCharacter:(NSString *)str device:(SFDevice *)device
 {
 	// Tell a single device to change.  Ordinarily this is done with all devices all at once.
+	device.lastCharacter = str;
 	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
 							 @"display", @"command",
 							 [NSDictionary dictionaryWithObjectsAndKeys:
-							  [NSString stringWithFormat:@"%c", ch], device.identifier, nil], @"devices",
+							  str, device.identifier, nil], @"devices",
 							 nil]];
+}
+
+- (void)beepDevice:(SFDevice *)device
+{
+	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
+							 @"beep", @"command",
+							 device.identifier, @"id",
+							 nil]];
+}
+
+- (void)startDevicesListening
+{
+	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
+							 @"listen", @"command",
+							 nil]];
+}
+
+- (void)stopDevicesListening
+{
+	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
+							 @"report", @"command",
+							 nil]];
+	// Devices will now send in their reports.
 }
 
 #pragma mark - Public API
@@ -147,7 +178,9 @@
 		if (index < str.length)
 			ch = [str characterAtIndex:index];
 		SFDevice *device = [devices objectAtIndex:index];
-		[deviceChars setObject:[NSString stringWithFormat:@"%c", ch] forKey:device.identifier];
+		NSString *str = [NSString stringWithFormat:@"%c", ch];
+		device.lastCharacter = str;
+		[deviceChars setObject:str forKey:device.identifier];
 	}
 	[mServer publishCommand:[NSDictionary dictionaryWithObjectsAndKeys:
 							 @"display", @"command",

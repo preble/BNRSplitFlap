@@ -14,6 +14,7 @@
 @interface SplitFlapClient : NSObject {
 	ZMQClient *mClient;
 	NSString *mClientID;
+	BOOL mWasListening;
 }
 @property (nonatomic, weak) id<SplitFlapClientDelegate> delegate;
 
@@ -29,4 +30,9 @@
 - (void)splitFlapClientDisconnected:(SplitFlapClient *)client;
 
 - (void)splitFlapClient:(SplitFlapClient *)client displayText:(NSString *)text;
+
+- (void)splitFlapClientBeep:(SplitFlapClient *)client;
+- (void)splitFlapClientStartListening:(SplitFlapClient *)client;
+- (CGFloat)splitFlapClientStopListening:(SplitFlapClient *)client;
+
 @end

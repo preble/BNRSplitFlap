@@ -74,7 +74,7 @@
 		if ([[self currentCharacter] isEqualToString:mDesiredCharacter])
 			mTicksUntilNextTrip = NSUIntegerMax;
 		else
-			mTicksUntilNextTrip = 3;
+			mTicksUntilNextTrip = 2;
 	}
 	for (Flap *flap in mFlaps)
 		[flap tick];

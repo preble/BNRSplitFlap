@@ -40,9 +40,6 @@
 	{
 		mAngle = 180;
 		mTicksAtRest++;
-		
-//		if (mTicksAtRest == 1)
-//			NSLog(@"%@ is now at rest", self);
 	}
 }
 

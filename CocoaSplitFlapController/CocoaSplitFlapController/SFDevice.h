@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSDate *lastHeartbeat;
+@property (nonatomic, strong) NSString *lastCharacter;
 
 + (SFDevice *)device;
 

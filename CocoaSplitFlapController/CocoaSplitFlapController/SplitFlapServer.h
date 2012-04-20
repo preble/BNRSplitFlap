@@ -10,6 +10,7 @@
 
 @class ZMQServer;
 @protocol SplitFlapServerDelegate;
+@class SFDevice;
 
 @interface SplitFlapServer : NSObject {
 	ZMQServer *mServer;
@@ -20,6 +21,11 @@
 @property (nonatomic, readonly) NSArray *devices;
 
 - (void)displayString:(NSString *)str;
+- (void)displayCharacter:(NSString *)str device:(SFDevice *)device;
+
+- (void)beepDevice:(SFDevice *)device;
+- (void)startDevicesListening;
+- (void)stopDevicesListening;
 
 @end
 
@@ -27,5 +33,7 @@
 @protocol SplitFlapServerDelegate <NSObject>
 
 - (void)splitFlapServerDevicesChanged:(SplitFlapServer *)controller;
+- (void)splitFlapServer:(SplitFlapServer *)server device:(SFDevice *)device reportedValue:(CGFloat)value;
+- (void)splitFlapServer:(SplitFlapServer *)server deviceTapped:(SFDevice *)device;
 
 @end

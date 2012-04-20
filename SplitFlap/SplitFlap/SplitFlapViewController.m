@@ -9,6 +9,7 @@
 #import "SplitFlapViewController.h"
 #import "SplitFlapClient.h"
 #import "Digit.h"
+#import "AudioController.h"
 
 @interface SplitFlapViewController () <SplitFlapClientDelegate>
 
@@ -35,6 +36,7 @@
 - (void)dealloc
 {
 	[mHeartbeatTimer invalidate];
+	[mAudioUpdateTimer invalidate];
 }
 
 - (void)viewDidLoad
@@ -67,6 +69,29 @@
 	
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
 	[self.view addGestureRecognizer:tap];
+	
+	[UIApplication sharedApplication].idleTimerDisabled = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	mLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
+	mLabel.font = [UIFont systemFontOfSize:24];
+	mLabel.backgroundColor = [UIColor clearColor];
+	mLabel.textColor = [UIColor grayColor];
+	mLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+	mLabel.text = @"";
+	[self.view addSubview:mLabel];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	
+	[UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 - (void)tap:(UITapGestureRecognizer *)tap
@@ -96,6 +121,22 @@
 	[mDigit tick];
 }
 
+- (AudioController *)audioController
+{
+	if (!mAudioController)
+	{
+		mAudioController = [[AudioController alloc] init];
+		[mAudioController setSound:[[NSBundle mainBundle] pathForResource :@"440" ofType :@"wav"]];
+	}
+	return mAudioController;
+}
+
+- (void)audioUpdateTimer:(NSTimer *)timer
+{
+	[[self audioController] updateLevels];
+	mLabel.text = [NSString stringWithFormat:@"%0.3f", [[self audioController] difference]];
+}
+
 #pragma mark SplitFlapClientDelegate
 
 - (void)splitFlapClientConnected:(SplitFlapClient *)client
@@ -113,6 +154,30 @@
 - (void)splitFlapClient:(SplitFlapClient *)client displayText:(NSString *)text
 {
 	[self setString:text];
+}
+
+- (void)splitFlapClientBeep:(SplitFlapClient *)client
+{
+    [[self audioController] playSound];
+}
+
+- (void)splitFlapClientStartListening:(SplitFlapClient *)client
+{
+	[[self audioController] resetPeak];
+	[[self audioController] resetDifference];
+	[[self audioController] listen];
+	
+	mAudioUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(audioUpdateTimer:) userInfo:nil repeats:YES];
+}
+
+- (CGFloat)splitFlapClientStopListening:(SplitFlapClient *)client
+{
+	[[self audioController] stop];
+	
+	[mAudioUpdateTimer invalidate];
+	mAudioUpdateTimer = nil;
+	
+	return [[self audioController] difference];
 }
 
 @end

@@ -24,7 +24,7 @@
 			[weakSelf handleCommandFromServer:command];
 		};
 		
-		[mClient connectToHost:@"10.1.10.31" basePort:15780];
+		[mClient connectToHost:@"10.0.1.2" basePort:15780];
 		
 		[self startHello];
 
@@ -66,6 +66,43 @@
 		NSString *text = [deviceChars objectForKey:mClientID];
 		if (text)
 			[mDelegate splitFlapClient:self displayText:text];
+	}
+	else if ([commandName isEqualToString:@"beep"])
+	{
+		NSString *identifier = [cmd objectForKey:@"id"];
+		if ([identifier isEqualToString:mClientID])
+		{
+			if (mWasListening)
+			{
+				[mDelegate splitFlapClientStopListening:self];
+				mWasListening = NO;
+			}
+			
+			[mDelegate splitFlapClientBeep:self];
+		}
+	}
+	else if ([commandName isEqualToString:@"listen"])
+	{
+		[mDelegate splitFlapClientStartListening:self];
+		mWasListening = YES;
+	}
+	else if ([commandName isEqualToString:@"report"])
+	{
+		// Ignore the "report" command if we weren't already listening.
+		if (!mWasListening)
+			return;
+		
+		CGFloat value = [mDelegate splitFlapClientStopListening:self];
+		mWasListening = NO;
+		
+		NSDictionary *cmd = [NSDictionary dictionaryWithObjectsAndKeys:
+							 @"report", @"command",
+							 mClientID, @"id",
+							 [NSNumber numberWithFloat:value], @"value",
+							 nil];
+		[mClient sendToServer:cmd response:^(NSDictionary *resp, NSError *error) {
+			// don't care
+		}];
 	}
 	else
 	{

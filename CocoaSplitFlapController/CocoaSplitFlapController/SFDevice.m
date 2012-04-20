@@ -13,7 +13,7 @@ NSString *UUIDString(void);
 
 @implementation SFDevice
 
-@synthesize identifier, lastHeartbeat;
+@synthesize identifier, lastHeartbeat, lastCharacter;
 
 + (SFDevice *)device
 {
@@ -31,7 +31,7 @@ NSString *UUIDString(void);
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@ %p: %@>", NSStringFromClass([self class]), self, self.identifier];
+	return [NSString stringWithFormat:@"<%@ %p: %@ \"%@\">", NSStringFromClass([self class]), self, self.identifier, self.lastCharacter];
 }
 
 @end
