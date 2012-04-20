@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @class GLKTextureInfo;
 
@@ -16,6 +17,7 @@
 	NSUInteger mTicksUntilNextTrip;
 	NSString *mDesiredCharacter;
 	GLKTextureInfo *mFlapTexture;
+	SystemSoundID mTripSound;
 }
 
 @property (nonatomic, strong) NSArray *flaps;

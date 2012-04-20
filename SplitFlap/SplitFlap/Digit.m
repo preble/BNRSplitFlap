@@ -48,8 +48,22 @@
 
 		
 		[self setCharacter:@"A" animated:YES];
+		
+		NSString *audioFile = [[NSBundle mainBundle] pathForResource:@"impact" ofType:@"wav"];
+		if ([[NSFileManager defaultManager] fileExistsAtPath:audioFile]){
+			NSURL *pathURL = [NSURL fileURLWithPath : audioFile];
+			AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &mTripSound);
+		}
+		else
+			NSLog(@"error, file not found: %@", audioFile);
+
     }
     return self;
+}
+
+- (void)dealloc
+{
+    AudioServicesDisposeSystemSoundID(mTripSound);
 }
 
 - (NSString *)currentCharacter
@@ -86,6 +100,8 @@
 			mTicksUntilNextTrip = NSUIntegerMax;
 		else
 			mTicksUntilNextTrip = 2;
+		
+		AudioServicesPlaySystemSound(mTripSound);
 	}
 	for (Flap *flap in mFlaps)
 		[flap tick];
