@@ -32,6 +32,7 @@
 - (IBAction)colors:(id)sender;
 - (IBAction)randomText:(id)sender;
 - (IBAction)clockModeToggled:(id)sender;
+- (IBAction)shuffleColors:(id)sender;
 
 - (void)saveTextBanks;
 

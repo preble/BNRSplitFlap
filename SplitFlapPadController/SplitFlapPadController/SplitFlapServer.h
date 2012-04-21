@@ -30,6 +30,8 @@
 - (void)startDevicesListening;
 - (void)stopDevicesListening;
 
+- (void)invalidateOrdering;
+
 @end
 
 

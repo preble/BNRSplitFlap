@@ -238,4 +238,9 @@
 	mOrderedDevices = [orderedDevices mutableCopy];
 }
 
+- (void)invalidateOrdering
+{
+	mOrderedDevices = nil;
+}
+
 @end

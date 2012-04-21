@@ -63,10 +63,13 @@
 	[super viewDidAppear:animated];
 	
 	mColors = [NSArray arrayWithObjects:
-			   [UIColor colorWithRed:1 green:1 blue:1 alpha:1],
-			   [UIColor colorWithRed:1 green:0 blue:0 alpha:1],
-			   [UIColor colorWithRed:0 green:1 blue:0 alpha:1],
-			   [UIColor colorWithRed:0 green:0 blue:1 alpha:1],
+			   [UIColor colorWithRed:1 green:0 blue:0 alpha:1], // red
+			   [UIColor colorWithRed:0 green:1 blue:0 alpha:1], // green
+			   [UIColor colorWithRed:0 green:0 blue:1 alpha:1], // blue
+			   [UIColor colorWithRed:1 green:0 blue:0.8 alpha:0.8], // magenta
+			   [UIColor colorWithRed:1 green:1 blue:1 alpha:1], // white
+			   [UIColor colorWithRed:0 green:0.8 blue:0.8 alpha:1], // cyan
+			   [UIColor colorWithRed:0.8 green:0.8 blue:0 alpha:1], // yellow
 			   nil];
 
 	mServer = [[SplitFlapServer alloc] init];
@@ -74,8 +77,28 @@
 	[self updateStatusText];
 	
 	[self loadTextBanks];
+	
+	srandom(time(NULL));
 }
 
+- (IBAction)shuffleColors:(id)sender
+{
+	static BOOL seeded = NO;
+	if(!seeded)
+	{
+		seeded = YES;
+		srandom(time(NULL));
+	}
+	NSMutableArray *colors = [mColors mutableCopy];
+    NSUInteger count = [colors count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        // Select a random element between i and end of array to swap with.
+        int nElements = count - i;
+        int n = (random() % nElements) + i;
+        [colors exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+	mColors = [colors copy];
+}
 
 - (void)updateStatusText
 {
@@ -200,7 +223,7 @@ float ColorDistance(UIColor *color, int r, int g, int b)
 		}
 		
 		// Ignore it if our best distance is not good:
-		if (bestDistance > 0.8)
+		if (bestDistance > 0.7)
 			continue;
 		
 		if (bestColor != currentColor)
@@ -259,6 +282,7 @@ float ColorDistance(UIColor *color, int r, int g, int b)
 
 - (IBAction)camera:(id)sender
 {
+	[mServer invalidateOrdering];
 	[mServer displayColors:mColors];
 	
 	UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
